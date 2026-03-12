@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics PRO - Главная</title>
+    <link rel="stylesheet" href="оформление.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</head>
+<body>
+
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Сменить тему">🌙</button>
+
+    <header>
+        <h1>Physics PRO</h1>
+        <p>Интерактивная база знаний по физике для 7-11 классов</p>
+    </header>
+
+    <nav>
+        <a href="седьмой_класс.html">7 класс</a>
+        <a href="восьмой_класс.html">8 класс</a>
+        <a href="девятый_класс.html">9 класс</a>
+        <a href="десятый_класс.html">10 класс</a>
+	<a href="одиннадцатый_класс.html">11 класс</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="formulaSearch" placeholder="Поиск любой формулы" autocomplete="off">
+                <button id="clearSearch" class="clear-search" title="Очистить">&times;</button>
+            </div>
+            <ul id="searchSuggestions" class="suggestions-list"></ul>
+        </div>
+	
+       <h2 class="section-title">Справочные данные и константы</h2>
+<div class="constants-container">
+    <table class="constants-table">
+        <thead>
+            <tr>
+                <th>Величина</th>
+                <th>Обозначение и значение</th>
+                <th>Где используется</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Ускорение свободного падения</td><td><span class="blue-constant">g ≈ 9,81 м/с²</span></td><td>Механика</td></tr>
+            <tr><td>Гравитационная постоянная</td><td><span class="blue-constant">G ≈ 6,67 · 10⁻¹¹ Н·м²/кг²</span></td><td>Тяготение</td></tr>
+            <tr><td>Скорость света в вакууме</td><td><span class="blue-constant">c ≈ 3 · 10⁸ м/с</span></td><td>Оптика, СТО, Кванты</td></tr>
+            <tr><td>Постоянная Планка</td><td><span class="blue-constant">h ≈ 6,63 · 10⁻³⁴ Дж·с</span></td><td>Квантовая физика</td></tr>
+            <tr><td>Элементарный заряд (электрон)</td><td><span class="blue-constant">e ≈ 1,6 · 10⁻¹⁹ Кл</span></td><td>Электричество, Кванты</td></tr>
+            <tr><td>Число Авогадро</td><td><span class="blue-constant">Nₐ ≈ 6,02 · 10²³ моль⁻¹</span></td><td>МКТ</td></tr>
+            <tr><td>Универсальная газовая постоянная</td><td><span class="blue-constant">R ≈ 8,31 Дж/(моль·К)</span></td><td>Термодинамика</td></tr>
+            <tr><td>Постоянная Больцмана</td><td><span class="blue-constant">k ≈ 1,38 · 10⁻²³ Дж/К</span></td><td>МКТ</td></tr>
+            <tr><td>Электрическая постоянная</td><td><span class="blue-constant">ε₀ ≈ 8,85 · 10⁻¹² Ф/м</span></td><td>Электростатика</td></tr>
+            <tr><td>Магнитная постоянная</td><td><span class="blue-constant">μ₀ ≈ 1,26 · 10⁻⁶ Гн/м</span></td><td>Магнетизм</td></tr>
+            <tr><td>Коэффициент Кулона</td><td><span class="blue-constant">k ≈ 9 · 10⁹ Н·м²/Кл²</span></td><td>Электростатика</td></tr>
+            <tr><td>Удельное сопротивление меди</td><td><span class="blue-constant">ρ ≈ 0,017 Ом·мм²/м</span></td><td>Постоянный ток</td></tr>
+            <tr><td>Удельная теплоемкость воды</td><td><span class="blue-constant">c ≈ 4200 Дж/(кг·°C)</span></td><td>Тепловые процессы</td></tr>
+            <tr><td>Электрохимический эквивалент (Cu)</td><td><span class="blue-constant">k ≈ 0,329 мг/Кл</span></td><td>Электролиз</td></tr>
+            <tr><td>Постоянная Хаббла</td><td><span class="blue-constant">H ≈ 70 (км/с)/Мпк</span></td><td>Астрономия</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .constants-container {
+        overflow-x: auto;
+        margin: 20px 0;
+        border-radius: 12px;
+        background: rgba(128, 128, 128, 0.05);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .constants-table {
+        width: 100%;
+        border-collapse: collapse;
+        /* ГЛАВНЫЙ СЕКРЕТ: инверсия цвета. 
+           Таблица будет брать тот же цвет, что и текст твоей страницы */
+        color: inherit; 
+    }
+
+    .constants-table th {
+        background-color: rgba(52, 73, 94, 0.9);
+        color: #ffffff; /* Заголовки всегда белые на темном фоне шапки */
+        padding: 12px;
+        text-align: left;
+    }
+
+    .constants-table td {
+        padding: 10px 15px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        /* Если основной текст страницы черный на светлой теме, 
+           здесь он тоже станет черным автоматически */
+    }
+
+    /* Синий цвет для обозначений — остается всегда приятным синим */
+    .blue-constant {
+        color: #3498db !important;
+        font-weight: bold;
+    }
+
+    /* На всякий случай принудительно для светлой темы, если inherit не сработает */
+    @media (prefers-color-scheme: light) {
+        .constants-table td {
+            color: #1a1a1a;
+        }
+    }
+
+    /* Для темной темы */
+    @media (prefers-color-scheme: dark) {
+        .constants-table td {
+            color: #ffffff;
+        }
+    }
+</style>
+        <section style="margin-top: 40px; text-align: center; opacity: 0.8;">
+            <p>Выбирай нужный класс в меню сверху или воспользуйся поиском, чтобы мгновенно найти формулу и воспользоваться встроенным калькулятором.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p style="text-align:center">Обратная связь:</p>
+        <div style="margin-top: 10px; text-align:center">
+            <a href="mailto:твой-email@mail.ru">📧 Email</a>
+            <a href="https://t.me/твой-ник" target="_blank">✈️ Telegram</a>
+        </div>
+        <p style="font-size: 0.8em; margin-top: 20px; opacity: 0.6; text-align:center">&copy; 2026 Справочник Physics PRO.</p>
+    </footer>
+
+    <script>
+        // --- 1. ЛОГИКА ТЕМЫ (LocalStorage) ---
+        const themeBtn = document.getElementById('themeBtn');
+        function updateBtnIcon() {
+            themeBtn.innerText = document.documentElement.hasAttribute('data-theme') ? '☀️' : '🌙';
+        }
+        updateBtnIcon();
+
+        function toggleTheme() {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateBtnIcon();
+        }
+
+        // --- 2. БАЗА ДАННЫХ ДЛЯ ГЛОБАЛЬНОГО ПОИСКА ---
+        // Сюда добавляй новые формулы по мере создания страниц
+        const globalFormulas = [
+        {name: "Ток в металлах (дрейф электронов)", link: "одиннадцатый_класс.html"},
+        {name: "Ток в электролитах (ионная проводимость)", link: "одиннадцатый_класс.html"},
+        {name: "Закон электролиза Фарадея (m=kIt)", link: "одиннадцатый_класс.html"},
+        {name: "Ток в газах (ионизация)", link: "11.html"},
+        {name: "Ток в вакууме (эмиссия)", link: "11.html"},
+        {name: "Ток в полупроводниках (p-n переход)", link: "11.html"},
+        {name: "Вектор магнитной индукции (B)", link: "11.html"},
+        {name: "Линии магнитной индукции", link: "11.html"},
+        {name: "Сила Ампера (Fₐ)", link: "одиннадцатый_класс.html"},
+        {name: "Сила Лоренца (F=qVB sin a)", link: "11.html"},
+        {name: "Движение частицы по окружности в поле", link: "11.html"},
+        {name: "Радиус окружности (R=mv/qB)", link: "11.html"},
+        {name: "Период обращения (T=2pm/qB)", link: "11.html"},
+        {name: "Магнитный поток (Ф=BS cos a)", link: "11.html"},
+        {name: "Закон индукции Фарадея (E=-dF/dt)", link: "11.html"},
+        {name: "Индуктивность (L=Ф/I)", link: "11.html"},
+        {name: "Энергия магнитного поля (W=LI²/2)", link: "11.html"},
+        {name: "Период пружинного маятника", link: "11.html"},
+        {name: "Период математического маятника", link: "11.html"},
+        {name: "Уравнение гармонических колебаний", link: "11.html"},
+        {name: "Колебательный контур (Формула Томсона)", link: "11.html"},
+        {name: "Циклическая частота (w)", link: "11.html"},
+        {name: "Связь w, v, T", link: "11.html"},
+        {name: "Энергия в контуре (W=q²/2C + LI²/2)", link: "11.html"},
+        {name: "Действующие значения (U и I)", link: "11.html"},
+        {name: "Трансформатор (U1/U2 = n1/n2)", link: "11.html"},
+        {name: "Закон преломления (Снеллиус)", link: "11.html"},
+        {name: "Показатель преломления (n=c/v)", link: "11.html"},
+        {name: "Полное внутреннее отражение", link: "11.html"},
+        {name: "Формула тонкой линзы", link: "11.html"},
+        {name: "Оптическая сила (D=1/F)", link: "11.html"},
+        {name: "Линейное увеличение (Г)", link: "11.html"},
+        {name: "Интерференция (max и min)", link: "11.html"},
+        {name: "Дифракционная решетка (d sin f = kL)", link: "11.html"},
+        {name: "Принцип относительности (СТО)", link: "11.html"},
+        {name: "Скорость света (постулат)", link: "11.html"},
+        {name: "Замедление времени", link: "11.html"},
+        {name: "Энергия покоя (E=mc²)", link: "11.html"},
+        {name: "Энергия фотона (E=hv)", link: "11.html"},
+        {name: "Импульс фотона (p=h/L)", link: "11.html"},
+        {name: "Уравнение фотоэффекта Эйнштейна", link: "11.html"},
+        {name: "Запирающее напряжение (eU)", link: "11.html"},
+        {name: "Красная граница фотоэффекта", link: "11.html"},
+        {name: "Давление света", link: "11.html"},
+        {name: "Масса фотона", link: "11.html"},
+        {name: "Постулаты Бора", link: "11.html"},
+        {name: "Закон радиоактивного распада", link: "11.html"},
+        {name: "Альфа-распад", link: "11.html"},
+        {name: "Бета-распад", link: "11.html"},
+        {name: "Дефект массы и энергия связи", link: "11.html"},
+        {name: "Закон Хаббла", link: "11.html"},
+        {name: "Светимость звезды", link: "11.html"},
+	{name: "Механическое движение. Путь и перемещение", link: "10.html"},
+	{name: "Скорость при равномерном движении (v = S/t)", link: "10.html"},
+	{name: "Уравнение координаты x = x0 + v*t", link: "10.html"},
+	{name: "Мгновенная скорость при ускорении (v = v0 + at)", link: "10.html"},
+	{name: "Проекция перемещения при ускорении (Sx)", link: "10.html"},
+	{name: "Перемещение без времени (S = (v² - v0²) / 2a)", link: "10.html"},
+	{name: "Уравнение координаты при ускорении x = x0 + v0t + at²/2", link: "10.html"},
+	{name: "Относительность движения (v_абс = v_отн + v_пер)", link: "10.html"},
+	{name: "Свободное падение (g = 9,8 м/с²)", link: "10.html"},
+	{name: "Движение тела, брошенного вертикально вверх", link: "10.html"},
+	{name: "Движение тела, брошенного под углом к горизонту", link: "10.html"},
+	{name: "Дальность полета и высота подъема", link: "10.html"},
+	{name: "Движение по окружности: Период и Частота", link: "10.html"},
+	{name: "Угловая скорость (w = f/t)", link: "10.html"},
+	{name: "Линейная скорость и связь с угловой (v = wR)", link: "10.html"},
+	{name: "Центростремительное ускорение (an = v²/R)", link: "10.html"},
+	{name: "Первый закон Ньютона (Инерциальные системы)", link: "10.html"},
+	{name: "Второй закон Ньютона (F = ma)", link: "10.html"},
+	{name: "Третий закон Ньютона (Действие и противодействие)", link: "10.html"},
+	{name: "Закон всемирного тяготения (F = G m1m2/r²)", link: "10.html"},
+	{name: "Сила тяжести и ускорение g на разной высоте", link: "10.html"},
+	{name: "Движение спутников. Первая космическая скорость", link: "10.html"},
+	{name: "Вес тела. Невесомость и Перегрузка", link: "10.html"},
+	{name: "Закон Гука (Сила упругости F = -kx)", link: "10.html"},
+	{name: "Последовательное и параллельное соединение пружин", link: "10.html"},
+	{name: "Сила трения покоя и Сила трения скольжения (uN)", link: "10.html"},
+	{name: "Коэффициент трения", link: "10.html"},
+	{name: "Сила сопротивления в среде", link: "10.html"},
+	{name: "Равновесие тел. Момент силы (M = Fd)", link: "10.html"},
+	{name: "Правило моментов для рычага", link: "10.html"},
+	{name: "Центр тяжести и виды равновесия", link: "10.html"},
+	{name: "Давление в жидкости и газе (Закон Паскаля)", link: "10.html"},
+	{name: "Гидростатическое давление (p = pgh)", link: "10.html"},
+	{name: "Сила Архимеда и условия плавания тел", link: "10.html"},
+	{name: "Импульс тела (p = mv)", link: "10.html"},
+	{name: "Импульс силы (Ft = Dp)", link: "10.html"},
+	{name: "Закон сохранения импульса (ЗСИ)", link: "10.html"},
+	{name: "Реактивное движение", link: "10.html"},
+	{name: "Работа постоянной силы (A = Fs cos a)", link: "10.html"},
+	{name: "Мощность (P = A/t = Fv)", link: "10.html"},
+	{name: "Кинетическая энергия (Eк = mv²/2)", link: "10.html"},
+	{name: "Потенциальная энергия в поле тяжести (mgh)", link: "10.html"},
+	{name: "Потенциальная энергия упругой деформации (kx²/2)", link: "10.html"},
+	{name: "Теорема об изменении кинетической энергии", link: "10.html"},
+	{name: "Закон сохранения механической энергии (ЗСЭ)", link: "10.html"},
+	{name: "Абсолютно упругий и неупругий удары", link: "10.html"},
+	{name: "КПД механизмов", link: "10.html"},
+	{name: "Основные положения МКТ", link: "10.html"},
+	{name: "Масса и размер молекул. Количество вещества (v)", link: "10.html"},
+	{name: "Постоянная Авогадро", link: "10.html"},
+	{name: "Молярная масса (M)", link: "10.html"},
+	{name: "Основное уравнение МКТ (p = 1/3 n m v²)", link: "10.html"},
+	{name: "Температура и средняя кинетическая энергия (3/2 kT)", link: "10.html"},
+	{name: "Постоянная Больцмана (k)", link: "10.html"},
+	{name: "Скорость молекул (Среднеквадратичная скорость)", link: "10.html"},
+	{name: "Уравнение состояния идеального газа (Менделеев-Клапейрон)", link: "10.html"},
+	{name: "Газовые законы: Изотермический процесс", link: "10.html"},
+	{name: "Газовые законы: Изобарный процесс", link: "10.html"},
+	{name: "Газовые законы: Изохорный процесс", link: "10.html"},
+	{name: "Графики изопроцессов в осях PV, VT, PT", link: "10.html"},
+	{name: "Закон Дальтона для смеси газов", link: "10.html"},
+	{name: "Насыщенный и ненасыщенный пар", link: "10.html"},
+	{name: "Влажность воздуха. Точка росы", link: "10.html"},
+	{name: "Кипение и давление пара", link: "10.html"},
+	{name: "Внутренняя энергия идеального газа (U = 3/2 vRT)", link: "10.html"},
+	{name: "Работа в термодинамике (A' = pDV)", link: "10.html"},
+	{name: "Геометрический смысл работы (площадь под графиком)", link: "10.html"},
+	{name: "Количество теплоты. Теплоемкость", link: "10.html"},
+	{name: "Уравнение теплового баланса", link: "10.html"},
+	{name: "Первый закон термодинамики (Q = DU + A')", link: "10.html"},
+	{name: "Применение I закона к изопроцессам", link: "10.html"},
+	{name: "Адиабатный процесс", link: "10.html"},
+	{name: "Второй закон термодинамики", link: "10.html"},
+	{name: "Тепловые двигатели и их КПД", link: "10.html"},
+	{name: "Цикл Карно. Максимальный КПД", link: "10.html"},
+	{name: "Электрический заряд. Закон сохранения заряда", link: "10.html"},
+	{name: "Закон Кулона (F = k|q1||q2|/r²)", link: "10.html"},
+	{name: "Электрическое поле. Напряженность (E = F/q)", link: "10.html"},
+	{name: "Напряженность точечного заряда", link: "10.html"},
+	{name: "Принцип суперпозиции электрических полей", link: "10.html"},
+	{name: "Линии напряженности", link: "10.html"},
+	{name: "Работа сил электростатического поля (A = qEd)", link: "10.html"},
+	{name: "Потенциал и Разность потенциалов (U)", link: "10.html"},
+	{name: "Связь напряженности и напряжения (E = U/d)", link: "10.html"},
+	{name: "Проводники и Диэлектрики в электрополе", link: "10.html"},
+	{name: "Диэлектрическая проницаемость (e)", link: "10.html"},
+	{name: "Электроемкость (C = q/U)", link: "10.html"},
+	{name: "Плоский конденсатор (емкость и поле)", link: "10.html"},
+	{name: "Энергия заряженного конденсатора (W = CU²/2)", link: "10.html"},
+	{name: "Соединение конденсаторов (Параллельное и Последовательное)", link: "10.html"},
+	{name: "Электродвижущая сила (ЭДС). Сторонние силы", link: "10.html"},
+	{name: "Закон Ома для полной цепи (I = E / (R + r))", link: "10.html"},
+	{name: "Соединение источников тока (батареи ЭДС)", link: "10.html"},
+	{name: "Электрический ток в металлах (Природа носителей)", link: "10.html"},
+	{name: "Электрический ток в полупроводниках (Собственная и примесная)", link: "10.html"},
+	{name: "Материальная точка. Система отсчета", link: "9.html"},
+	{name: "Перемещение и путь. Координаты", link: "9.html"},
+	{name: "Векторные величины. Проекции векторов", link: "9.html"},
+	{name: "Равномерное прямолинейное движение", link: "9.html"},
+	{name: "Графики зависимости v(t) и x(t)", link: "9.html"},
+	{name: "Мгновенная скорость и ускорение (a = (v-v0)/t)", link: "9.html"},
+	{name: "Прямолинейное равноускоренное движение", link: "9.html"},
+	{name: "Перемещение при равноускоренном движении", link: "9.html"},
+	{name: "Уравнение координаты для 9 класса (x = x0 + v0t + at²/2)", link: "9.html"},
+	{name: "Графическое представление ускоренного движения", link: "9.html"},
+	{name: "Свободное падение тел", link: "9.html"},
+	{name: "Ускорение свободного падения g", link: "9.html"},
+	{name: "Движение по окружности. Период и частота", link: "9.html"},
+	{name: "Линейная скорость (v = 2pR/T)", link: "9.html"},
+	{name: "Центростремительное ускорение (a = v²/R)", link: "9.html"},
+	{name: "Первый закон Ньютона (Инерция)", link: "9.html"},
+	{name: "Второй закон Ньютона (F = ma)", link: "9.html"},
+	{name: "Третий закон Ньютона (Действие равно противодействию)", link: "9.html"},
+	{name: "Сила тяжести и Закон всемирного тяготения", link: "9.html"},
+	{name: "Ускорение свободного падения на других планетах", link: "9.html"},
+	{name: "Импульс тела (p = mv)", link: "9.html"},
+	{name: "Закон сохранения импульса", link: "9.html"},
+	{name: "Реактивное движение. Устройство ракеты", link: "9.html"},
+	{name: "Механическая работа и энергия", link: "9.html"},
+	{name: "Закон сохранения механической энергии", link: "9.html"},
+	{name: "Равновесие тел. Рычаги", link: "9.html"},
+	{name: "Коэффициент полезного действия (КПД)", link: "9.html"},
+	{name: "Колебательное движение. Амплитуда, Период, Частота", link: "9.html"},
+	{name: "Математический маятник (период)", link: "9.html"},
+	{name: "Пружинный маятник (период)", link: "9.html"},
+	{name: "Гармонические колебания", link: "9.html"},
+	{name: "Затухающие колебания", link: "9.html"},
+	{name: "Вынужденные колебания. Резонанс", link: "9.html"},
+	{name: "Механические волны. Продольные и поперечные", link: "9.html"},
+	{name: "Длина волны и скорость (v = Lf)", link: "9.html"},
+	{name: "Звуковые волны. Источники звука", link: "9.html"},
+	{name: "Высота, тембр и громкость звука", link: "9.html"},
+	{name: "Магнитное поле и его свойства", link: "9.html"},
+	{name: "Магнитное поле тока. Опыт Эрстеда", link: "9.html"},
+	{name: "Магнитные линии. Правило буравчика", link: "9.html"},
+	{name: "Магнитное поле катушки с током. Электромагниты", link: "9.html"},
+	{name: "Постоянные магниты. Полюса Земли", link: "9.html"},
+	{name: "Действие поля на ток. Сила Ампера", link: "9.html"},
+	{name: "Правило левой руки", link: "9.html"},
+	{name: "Электромотор (Принцип работы)", link: "9.html"},
+	{name: "Электромагнитная индукция. Опыты Фарадея", link: "9.html"},
+	{name: "Магнитный поток (Ф)", link: "9.html"},
+	{name: "Индукционный ток. Правило Ленца", link: "9.html"},
+	{name: "Электрогенератор. Переменный ток", link: "9.html"},
+	{name: "Электромагнитное поле", link: "9.html"},
+	{name: "Электромагнитные волны", link: "9.html"},
+	{name: "Скорость света и шкала излучений", link: "9.html"},
+	{name: "Интерференция и Дифракция света (основы)", link: "9.html"},
+	{name: "Дисперсия света. Цвета радуги", link: "9.html"},
+	{name: "Отражение света. Зеркала", link: "9.html"},
+	{name: "Преломление света. Линзы", link: "9.html"},
+	{name: "Оптическая сила линзы (D)", link: "9.html"},
+	{name: "Радиоактивность как явление", link: "9.html"},
+	{name: "Модели атомов. Опыт Резерфорда", link: "9.html"},
+	{name: "Состав атомного ядра. Протоны и нейтроны", link: "9.html"},
+	{name: "Изотопы", link: "9.html"},
+	{name: "Альфа, Бета и Гамма излучения", link: "9.html"},
+	{name: "Радиоактивные превращения", link: "9.html"},
+	{name: "Закон радиоактивного распада (основы)", link: "9.html"},
+	{name: "Методы регистрации излучений", link: "9.html"},
+	{name: "Ядерные реакции. Энергия связи", link: "9.html"},
+	{name: "Деление ядер урана. Цепная реакция", link: "9.html"},
+	{name: "Ядерный реактор. Атомная энергетика", link: "9.html"},
+	{name: "Тепловое движение. Внутренняя энергия", link: "8.html"},
+	{name: "Способы изменения внутренней энергии", link: "8.html"},
+	{name: "Теплопроводность в различных средах", link: "8.html"},
+	{name: "Конвекция в газах и жидкостях", link: "8.html"},
+	{name: "Излучение (лучистый теплообмен)", link: "8.html"},
+	{name: "Количество теплоты. Удельная теплоемкость (Q = cmDT)", link: "8.html"},
+	{name: "Энергия топлива. Удельная теплота сгорания (Q = qm)", link: "8.html"},
+	{name: "Закон сохранения энергии в тепловых процессах", link: "8.html"},
+	{name: "Агрегатные состояния вещества", link: "8.html"},
+	{name: "Плавление и отвердевание. Удельная теплота плавления (L)", link: "8.html"},
+	{name: "Испарение и Конденсация. Кипение", link: "8.html"},
+	{name: "Удельная теплота парообразования (L)", link: "8.html"},
+	{name: "Электризация тел. Два рода зарядов", link: "8.html"},
+	{name: "Электроскоп. Проводники и диэлектрики", link: "8.html"},
+	{name: "Делимость заряда. Электрон", link: "8.html"},
+	{name: "Строение атома (ядро и электроны) для 8 класса", link: "8.html"},
+	{name: "Электрический ток. Источники тока", link: "8.html"},
+	{name: "Электрическая цепь и её составные части", link: "8.html"},
+	{name: "Сила тока (I = q/t). Амперметр", link: "8.html"},
+	{name: "Электрическое напряжение (U = A/q). Вольтметр", link: "8.html"},
+	{name: "Электрическое сопротивление (R). Реостаты", link: "8.html"},
+	{name: "Закон Ома для участка цепи (I = U/R)", link: "8.html"},
+	{name: "Последовательное соединение проводников", link: "8.html"},
+	{name: "Параллельное соединение проводников", link: "8.html"},
+	{name: "Работа и Мощность тока (P = UI)", link: "8.html"},
+	{name: "Закон Джоуля-Ленца (Q = I²Rt)", link: "8.html"},
+	{name: "Источники света. Прямолинейное распространение", link: "8.html"},
+	{name: "Отражение света. Закон отражения", link: "8.html"},
+	{name: "Плоское зеркало", link: "8.html"},
+	{name: "Преломление света. Закон преломления", link: "8.html"},
+	{name: "Линзы. Оптическая сила линзы (D = 1/F)", link: "8.html"},
+	{name: "Построение изображений в линзах", link: "8.html"},
+	{name: "Глаз как оптическая система", link: "8.html"},
+	{name: "Близорукость и дальнозоркость. Очки", link: "8.html"},
+	{name: "Физические явления и тела. Наблюдения и опыты", link: "7.html"},
+	{name: "Измерительные приборы. Погрешность измерений", link: "7.html"},
+	{name: "Строение вещества. Молекулы и атомы", link: "7.html"},
+	{name: "Диффузия в газах, жидкостях и твердых телах", link: "7.html"},
+	{name: "Взаимное притяжение и отталкивание молекул", link: "7.html"},
+	{name: "Агрегатные состояния вещества (строение)", link: "7.html"},
+	{name: "Механическое движение. Траектория и путь", link: "7.html"},
+	{name: "Равномерное и неравномерное движение. Скорость (v=S/t)", link: "7.html"},
+	{name: "Инерция. Взаимодействие тел", link: "7.html"},
+	{name: "Масса тела. Единицы массы", link: "7.html"},
+	{name: "Плотность вещества (p = m/V)", link: "7.html"},
+	{name: "Сила. Сила тяжести (F = mg)", link: "7.html"},
+	{name: "Сила упругости. Закон Гука (F = kx)", link: "7.html"},
+	{name: "Вес тела. Сила трения", link: "7.html"},
+	{name: "Давление твердых тел (p = F/S)", link: "7.html"},
+	{name: "Давление газа. Закон Паскаля", link: "7.html"},
+	{name: "Давление в жидкости и газе (p = pgh)", link: "7.html"},
+	{name: "Сообщающиеся сосуды", link: "7.html"},
+	{name: "Атмосферное давление. Опыт Торричелли", link: "7.html"},
+	{name: "Действие жидкости на тело. Сила Архимеда (Fa = pgV)", link: "7.html"},
+	{name: "Плавание тел. Воздухоплавание", link: "7.html"},
+	{name: "Механическая работа (A = Fs)", link: "7.html"},
+	{name: "Мощность (N = A/t)", link: "7.html"},
+	{name: "Простые механизмы. Рычаг. Блок", link: "7.html"},
+	{name: "Золотое правило механики. КПД", link: "7.html"},
+	{name: "Энергия: Кинетическая и Потенциальная", link: "7.html"}
+        ];
+
+        // --- 3. ЛОГИКА ПОИСКА И КРЕСТИКА ---
+        const searchInput = document.getElementById('formulaSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        const suggList = document.getElementById('searchSuggestions');
+
+        searchInput.addEventListener('input', function() {
+            const val = this.value.trim().toLowerCase();
+            
+            // Показываем/скрываем крестик
+            clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+            
+            suggList.innerHTML = '';
+            
+            if (val.length < 1) {
+                suggList.style.display = 'none';
+                return;
+            }
+
+            const matches = globalFormulas.filter(f => f.name.toLowerCase().includes(val));
+
+            matches.forEach(m => {
+                const li = document.createElement('li');
+                li.innerText = m.name;
+                li.onclick = () => {
+    		const targetUrl = m.link + "?find=" + encodeURIComponent(m.name.trim());
+    		window.location.href = targetUrl;
+		};
+                suggList.appendChild(li);
+            });
+
+            suggList.style.display = matches.length > 0 ? 'block' : 'none';
+        });
+
+        // Кнопка очистки (крестик)
+        clearBtn.onclick = () => {
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+            suggList.style.display = 'none';
+            searchInput.focus();
+        };
+
+        // Закрытие списка при клике мимо
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                suggList.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

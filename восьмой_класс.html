@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 класс - Physics PRO</title>
+    <link rel="stylesheet" href="оформление.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <style>
+        /* Дополнительный стиль для заголовков разделов */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body class="class-8-page">
+
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <h1>8 класс</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">На главную</a>
+        <a href="седьмой_класс.html">7 класс</a>
+	<a href="девятый_класс.html">9 класс</a>
+	<a href="десятый_класс.html">10 класс</a>
+	<a href="одиннадцатый_класс.html">11 класс</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="formulaSearch" placeholder="Поиск по темам 8 класса..." autocomplete="off">
+                <button id="clearSearch" class="clear-search" title="Очистить">&times;</button>
+            </div>
+            <ul id="searchSuggestions" class="suggestions-list"></ul>
+        </div>
+	
+	<h2 class="section-title">Тепловые явления</h2>
+<div class="grid">
+
+    <details data-name="перевод из шкалы фаренгейта">
+        <summary>Из Фаренгейта в Цельсий</summary>
+        <div class="content">
+            <div class="math">$$t°C = \frac{5}{9} \cdot (t°F - 32)$$</div>
+            <div class="calc-box">
+                <input type="number" id="t1_f" placeholder="t (°F)">
+                <button class="calc-btn" onclick="calcT1()">Перевести в °C</button>
+                <div id="rest1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="перевод из шкалы кельвина">
+        <summary>Из Кельвина в Цельсий</summary>
+        <div class="content">
+            <div class="math">$$t°C = t°K - 273$$</div>
+            <div class="calc-box">
+                <input type="number" id="t2_k" placeholder="t (K)">
+                <button class="calc-btn" onclick="calcT2()">Перевести в °C</button>
+                <div id="rest2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="термическое расширение">
+        <summary>Термическое расширение</summary>
+        <div class="content">
+            <div class="math">$$l = l_0(1 + \alpha \cdot \Delta t)$$</div>
+            <p><b>l₀</b> — начальная длина, <b>α</b> — коэффициент расширения, <b>Δt</b> — изменение температуры.</p>
+            <div class="calc-box">
+                <input type="number" id="t3_l0" placeholder="l₀ (м)">
+                <input type="number" id="t3_alpha" placeholder="α (1/°C)">
+                <input type="number" id="t3_dt" placeholder="Δt (°C)">
+                <button class="calc-btn" onclick="calcT3()">Рассчитать длину l</button>
+                <div id="rest3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="количество теплоты при нагревании">
+        <summary>Нагревание и охлаждение</summary>
+        <div class="content">
+            <div class="math">$$Q = c \cdot m \cdot (t_{кон} - t_{нач})$$</div>
+            <p><b>c</b> — удельная теплоёмкость, <b>m</b> — масса.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="t4_c" placeholder="c (Дж/кг·°C)">
+                <input type="number" id="t4_m" placeholder="m (кг)">
+                <input type="number" id="t4_t2" placeholder="t кон (°C)">
+                <input type="number" id="t4_t1" placeholder="t нач (°C)">
+                <button class="calc-btn" onclick="calcT4()">Рассчитать Q</button>
+                <div id="rest4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="теплота при сгорании">
+        <summary>Сгорание топлива</summary>
+        <div class="content">
+            <div class="math">$$Q = q \cdot m$$</div>
+            <p><b>q</b> — удельная теплота сгорания топлива.</p>
+            <div class="calc-box">
+                <input type="number" id="t5_q" placeholder="q (Дж/кг)">
+                <input type="number" id="t5_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcT5()">Рассчитать Q</button>
+                <div id="rest5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="плавление и кристаллизация">
+        <summary>Плавление и кристаллизация</summary>
+        <div class="content">
+            <div class="math">$$Q = \lambda \cdot m$$</div>
+            <p><b>λ</b> — удельная теплота плавления.</p>
+            <div class="calc-box">
+                <input type="number" id="t6_lam" placeholder="λ (Дж/кг)">
+                <input type="number" id="t6_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcT6()">Рассчитать Q</button>
+                <div id="rest6" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="испарение и конденсация">
+        <summary>Испарение и конденсация</summary>
+        <div class="content">
+            <div class="math">$$Q = L \cdot m$$</div>
+            <p><b>L</b> — удельная теплота парообразования.</p>
+            <div class="calc-box">
+                <input type="number" id="t7_l" placeholder="L (Дж/кг)">
+                <input type="number" id="t7_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcT7()">Рассчитать Q</button>
+                <div id="rest7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="абсолютная влажность">
+        <summary>Абсолютная влажность</summary>
+        <div class="content">
+            <div class="math">$$\rho = \frac{m}{V}$$</div>
+            <p><b>m</b> — масса водяного пара, <b>V</b> — объём воздуха.</p>
+            <div class="calc-box">
+                <input type="number" id="t8_m" placeholder="m (кг)">
+                <input type="number" id="t8_v" placeholder="V (м³)">
+                <button class="calc-btn" onclick="calcT8()">Рассчитать ρ</button>
+                <div id="rest8" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="относительная влажность">
+        <summary>Относительная влажность</summary>
+        <div class="content">
+            <div class="math">$$\varphi = \frac{\rho}{\rho_0} \cdot 100\%$$</div>
+            <p><b>ρ₀</b> — плотность насыщенного пара.</p>
+            <div class="calc-box">
+                <input type="number" id="t9_p" placeholder="ρ (кг/м³)">
+                <input type="number" id="t9_p0" placeholder="ρ₀ (кг/м³)">
+                <button class="calc-btn" onclick="calcT9()">Рассчитать φ (%)</button>
+                <div id="rest9" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="кпд теплового двигателя">
+        <summary>КПД теплового двигателя</summary>
+        <div class="content">
+            <div class="math">$$\eta = \frac{A_п}{Q_1}$$</div>
+            <p><b>Aп</b> — полезная работа, <b>Q₁</b> — теплота от нагревателя.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="t10_a" placeholder="Aп (Дж)">
+                <input type="number" id="t10_q1" placeholder="Q₁ (Дж)">
+                <button class="calc-btn" onclick="calcT10()">Рассчитать КПД</button>
+                <div id="rest10" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="уравнение теплового баланса">
+        <summary>Уравнение теплового баланса</summary>
+        <div class="content">
+            <div class="math">$$|Q_{пол}| = |Q_{отд}|$$</div>
+            <p>Теплота, полученная холодными телами, равна теплоте, отданной горячими.</p>
+            <div class="calc-box">
+                <input type="number" id="t11_qpol" placeholder="Q полученная">
+                <input type="number" id="t11_qotd" placeholder="Q отданная">
+                <button class="calc-btn" onclick="calcT11()">Проверить баланс</button>
+                <div id="rest11" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Электрические явления</h2>
+<div class="grid">
+
+    <details data-name="закон сохранения электрического заряда">
+        <summary>Закон сохранения заряда</summary>
+        <div class="content">
+            <div class="math">$$q_1 + q_2 + \dots + q_n = const$$</div>
+            <p>В замкнутой системе алгебраическая сумма зарядов остаётся неизменной.</p>
+            <div class="calc-box">
+                <input type="number" id="e1_q1" placeholder="q₁ (Кл)">
+                <input type="number" id="e1_q2" placeholder="q₂ (Кл)">
+                <button class="calc-btn" onclick="calcE1()">Суммарный заряд</button>
+                <div id="rese1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила тока">
+        <summary>Сила тока</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{q}{t}$$</div>
+            <p><b>q</b> — заряд (Кл), <b>t</b> — время (с).</p>
+            <div class="calc-box">
+                <input type="number" id="e2_q" placeholder="q (Кл)">
+                <input type="number" id="e2_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcE2()">Рассчитать I</button>
+                <div id="rese2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="электрическое напряжение">
+        <summary>Электрическое напряжение</summary>
+        <div class="content">
+            <div class="math">$$U = \frac{A}{q}$$</div>
+            <p><b>A</b> — работа поля (Дж), <b>q</b> — заряд (Кл).</p>
+            <div class="calc-box">
+                <input type="number" id="e3_a" placeholder="A (Дж)">
+                <input type="number" id="e3_q" placeholder="q (Кл)">
+                <button class="calc-btn" onclick="calcE3()">Рассчитать U</button>
+                <div id="rese3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="электрическое сопротивление">
+        <summary>Электрическое сопротивление</summary>
+        <div class="content">
+            <div class="math">$$R = \frac{\rho \cdot l}{S}$$</div>
+            <p><b>ρ</b> — удельн. сопр., <b>l</b> — длина (м), <b>S</b> — сечение (мм²).</p>
+            <div class="calc-box">
+                <input type="number" id="e4_p" placeholder="ρ (Ом·мм²/м)">
+                <input type="number" id="e4_l" placeholder="l (м)">
+                <input type="number" id="e4_s" placeholder="S (мм²)">
+                <button class="calc-btn" onclick="calcE4()">Рассчитать R</button>
+                <div id="rese4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон ома для участка цепи">
+        <summary>Закон Ома для участка цепи</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{U}{R}$$</div>
+            <p><b>U</b> — напряжение (В), <b>R</b> — сопротивление (Ом).</p>
+            
+            <div class="calc-box">
+                <input type="number" id="e5_u" placeholder="U (В)">
+                <input type="number" id="e5_r" placeholder="R (Ом)">
+                <button class="calc-btn" onclick="calcE5()">Рассчитать I</button>
+                <div id="rese5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="работа тока">
+        <summary>Работа тока</summary>
+        <div class="content">
+            <div class="math">$$A = U \cdot I \cdot t$$</div>
+            <div class="calc-box">
+                <input type="number" id="e12_u" placeholder="U (В)">
+                <input type="number" id="e12_i" placeholder="I (А)">
+                <input type="number" id="e12_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcE12()">Рассчитать A</button>
+                <div id="rese12" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="мощность тока">
+        <summary>Мощность тока</summary>
+        <div class="content">
+            <div class="math">$$P = \frac{A}{t}$$</div>
+            <div class="calc-box">
+                <input type="number" id="e13_a" placeholder="A (Дж)">
+                <input type="number" id="e13_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcE13()">Рассчитать P</button>
+                <div id="rese13" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="количество теплоты выделяемое проводником">
+        <summary>Количество теплоты (Закон Джоуля-Ленца)</summary>
+        <div class="content">
+            <div class="math">$$Q = I^2 \cdot R \cdot t$$</div>
+            <div class="calc-box">
+                <input type="number" id="e14_i" placeholder="I (А)">
+                <input type="number" id="e14_r" placeholder="R (Ом)">
+                <input type="number" id="e14_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcE14()">Рассчитать Q</button>
+                <div id="rese14" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="электроэнергия">
+        <summary>Электроэнергия</summary>
+        <div class="content">
+            <div class="math">$$E = P \cdot t$$</div>
+            <div class="calc-box">
+                <input type="number" id="e15_p" placeholder="P (Вт)">
+                <input type="number" id="e15_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcE15()">Рассчитать E</button>
+                <div id="rese15" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin: 30px 0 15px;">Последовательное соединение цепи</h3>
+
+<div class="grid">
+    <details data-name="последовательное сила тока">
+        <summary>Сила тока (Последовательное)</summary>
+        <div class="content">
+            <div class="math">$$I = I_1 = I_2 = \dots = I_n$$</div>
+            <div class="calc-box">
+                <div id="dyn_i_posl">
+                    <input type="number" placeholder="I₁ (А)">
+                    <input type="number" placeholder="I₂ (А)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_i_posl', 'I', 'А')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcEqDyn('dyn_i_posl', 'res_i_posl', 'А')">Узнать общую I</button>
+                <div id="res_i_posl" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="последовательное напряжение">
+        <summary>Напряжение (Последовательное)</summary>
+        <div class="content">
+            <div class="math">$$U = U_1 + U_2 + \dots + U_n$$</div>
+            <div class="calc-box">
+                <div id="dyn_u_posl">
+                    <input type="number" placeholder="U₁ (В)">
+                    <input type="number" placeholder="U₂ (В)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_u_posl', 'U', 'В')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcSumDyn('dyn_u_posl', 'res_u_posl', 'В')">Рассчитать общее U</button>
+                <div id="res_u_posl" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="последовательное сопротивление">
+        <summary>Сопротивление (Последовательное)</summary>
+        <div class="content">
+            <div class="math">$$R = R_1 + R_2 + \dots + R_n$$</div>
+            <div class="calc-box">
+                <div id="dyn_r_posl">
+                    <input type="number" placeholder="R₁ (Ом)">
+                    <input type="number" placeholder="R₂ (Ом)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_r_posl', 'R', 'Ом')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcSumDyn('dyn_r_posl', 'res_r_posl', 'Ом')">Рассчитать общее R</button>
+                <div id="res_r_posl" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin: 30px 0 15px;">Параллельное соединение цепи</h3>
+
+<div class="grid">
+    <details data-name="параллельное сила тока">
+        <summary>Сила тока (Параллельное)</summary>
+        <div class="content">
+            <div class="math">$$I = I_1 + I_2 + \dots + I_n$$</div>
+            <div class="calc-box">
+                <div id="dyn_i_par">
+                    <input type="number" placeholder="I₁ (А)">
+                    <input type="number" placeholder="I₂ (А)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_i_par', 'I', 'А')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcSumDyn('dyn_i_par', 'res_i_par', 'А')">Рассчитать общую I</button>
+                <div id="res_i_par" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="параллельное напряжение">
+        <summary>Напряжение (Параллельное)</summary>
+        <div class="content">
+            <div class="math">$$U = U_1 = U_2 = \dots = U_n$$</div>
+            <div class="calc-box">
+                <div id="dyn_u_par">
+                    <input type="number" placeholder="U₁ (В)">
+                    <input type="number" placeholder="U₂ (В)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_u_par', 'U', 'В')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcEqDyn('dyn_u_par', 'res_u_par', 'В')">Узнать общее U</button>
+                <div id="res_u_par" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="параллельное сопротивление">
+        <summary>Сопротивление (Параллельное)</summary>
+        <div class="content">
+            <div class="math">$$\frac{1}{R} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}$$</div>
+            <div class="calc-box">
+                <div id="dyn_r_par">
+                    <input type="number" placeholder="R₁ (Ом)">
+                    <input type="number" placeholder="R₂ (Ом)">
+                </div>
+                <button class="calc-btn" style="background: #666;" onclick="addInput('dyn_r_par', 'R', 'Ом')">+ Добавить элемент</button>
+                <button class="calc-btn" onclick="calcParResDyn('dyn_r_par', 'res_r_par')">Рассчитать общее R</button>
+                <div id="res_r_par" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+</div>
+
+	<h2 class="section-title">Магнитные явления</h2>
+<div class="grid">
+
+    <details data-name="правило правой руки">
+        <summary>Правило правой руки</summary>
+        <div class="content">
+            <p>Используется для определения направления линий магнитного поля вокруг проводника.</p>
+            
+            <blockquote>
+                Если большой палец правой руки направить по току, то четыре согнутых пальца укажут направление линий магнитной индукции.
+            </blockquote>
+        </div>
+    </details>
+
+    <details data-name="правило левой руки">
+        <summary>Правило левой руки</summary>
+        <div class="content">
+            <p>Определяет направление силы, действующей на заряд или проводник в магнитном поле.</p>
+            
+            <blockquote>
+                Линии индукции входят в ладонь, четыре пальца — по току, отогнутый большой палец укажет направление силы.
+            </blockquote>
+        </div>
+    </details>
+
+    <details data-name="магнитная индукция">
+        <summary>Магнитная индукция</summary>
+        <div class="content">
+            <div class="math">$$B = \frac{F}{I \cdot l}$$</div>
+            <p><b>F</b> — сила (Н), <b>I</b> — сила тока (А), <b>l</b> — длина проводника (м).</p>
+            <div class="calc-box">
+                <input type="number" id="m3_f" placeholder="F (Н)">
+                <input type="number" id="m3_i" placeholder="I (А)">
+                <input type="number" id="m3_l" placeholder="l (м)">
+                <button class="calc-btn" onclick="calcM3()">Рассчитать B (Тл)</button>
+                <div id="resm3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="правило ленца">
+        <summary>Правило Ленца</summary>
+        <div class="content">
+            <div class="math">$$\mathcal{E}_i = -\frac{\Delta \Phi}{\Delta t}$$</div>
+            
+            <blockquote>
+                Индукционный ток всегда имеет такое направление, что создаваемое им магнитное поле препятствует изменению магнитного потока, вызвавшего этот ток.
+            </blockquote>
+        </div>
+    </details>
+
+    <details data-name="энергия магнитного поля">
+        <summary>Энергия магнитного поля</summary>
+        <div class="content">
+            <div class="math">$$E_м = \frac{L \cdot I^2}{2}$$</div>
+            <p><b>L</b> — индуктивность катушки (Гн), <b>I</b> — сила тока (А).</p>
+            <div class="calc-box">
+                <input type="number" id="m5_l" placeholder="L (Гн)">
+                <input type="number" id="m5_i" placeholder="I (А)">
+                <button class="calc-btn" onclick="calcM5()">Рассчитать Eм</button>
+                <div id="resm5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила переменного тока">
+        <summary>Действующее значение тока</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{I_м}{\sqrt{2}}$$</div>
+            <p>Перевод амплитудного значения <b>Iₘ</b> в действующее.</p>
+            <div class="calc-box">
+                <input type="number" id="m6_im" placeholder="Iₘ (А)">
+                <button class="calc-btn" onclick="calcM6()">Рассчитать I</button>
+                <div id="resm6" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила переменного напряжения">
+        <summary>Действующее напряжение</summary>
+        <div class="content">
+            <div class="math">$$U = \frac{U_м}{\sqrt{2}}$$</div>
+            <p>Перевод амплитудного значения <b>Uₘ</b> в действующее.</p>
+            <div class="calc-box">
+                <input type="number" id="m7_um" placeholder="Uₘ (В)">
+                <button class="calc-btn" onclick="calcM7()">Рассчитать U</button>
+                <div id="resm7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="коэффициент трансформации">
+        <summary>Коэффициент трансформации</summary>
+        <div class="content">
+            <div class="math">$$k = \frac{U_1}{U_2} = \frac{w_1}{w_2}$$</div>
+            <p>Отношение напряжений или числа витков в обмотках трансформатора.</p>
+            
+
+            <div class="calc-box">
+                <input type="number" id="m8_v1" placeholder="U₁ или w₁">
+                <input type="number" id="m8_v2" placeholder="U₂ или w₂">
+                <button class="calc-btn" onclick="calcM8()">Рассчитать k</button>
+                <div id="resm8" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+
+
+
+
+
+
+        
+    </div>
+
+    <footer>
+        <p  style="text-align:center">&copy; 2026 Справочник Physics PRO.</p>
+    </footer>
+
+    <script>
+        // ТЕМА
+        const themeBtn = document.getElementById('themeBtn');
+        function updateBtnIcon() {
+            themeBtn.innerText = document.documentElement.hasAttribute('data-theme') ? '☀️' : '🌙';
+        }
+        updateBtnIcon();
+        function toggleTheme() {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateBtnIcon();
+        }
+
+        // КАЛЬКУЛЯТОРЫ
+        
+	// --- РАЗДЕЛ: ТЕПЛОВЫЕ ЯВЛЕНИЯ ---
+
+// 1. Фаренгейт в Цельсий
+function calcT1() {
+    const f = document.getElementById('t1_f').value;
+    const res = document.getElementById('rest1');
+    if (f !== "") res.innerText = "Результат: " + ((5/9) * (f - 32)).toFixed(2) + " °C";
+    else res.innerText = "Введите °F!";
+}
+
+// 2. Кельвин в Цельсий
+function calcT2() {
+    const k = document.getElementById('t2_k').value;
+    const res = document.getElementById('rest2');
+    if (k !== "") res.innerText = "Результат: " + (k - 273).toFixed(2) + " °C";
+    else res.innerText = "Введите Кельвины!";
+}
+
+// 3. Термическое расширение
+function calcT3() {
+    const l0 = document.getElementById('t3_l0').value;
+    const alpha = document.getElementById('t3_alpha').value;
+    const dt = document.getElementById('t3_dt').value;
+    const res = document.getElementById('rest3');
+    if (l0 && alpha !== "" && dt !== "") {
+        const result = l0 * (1 + (alpha * dt));
+        res.innerText = "Длина: " + result.toFixed(4) + " м";
+    } else res.innerText = "Заполните все поля!";
+}
+
+// 4. Нагревание / Охлаждение
+function calcT4() {
+    const c = document.getElementById('t4_c').value;
+    const m = document.getElementById('t4_m').value;
+    const t2 = document.getElementById('t4_t2').value;
+    const t1 = document.getElementById('t4_t1').value;
+    const res = document.getElementById('rest4');
+    if (c && m && t2 !== "" && t1 !== "") {
+        res.innerText = "Q = " + (c * m * (t2 - t1)).toFixed(2) + " Дж";
+    } else res.innerText = "Заполните все поля!";
+}
+
+// 5. Сгорание
+function calcT5() {
+    const q = document.getElementById('t5_q').value;
+    const m = document.getElementById('t5_m').value;
+    const res = document.getElementById('rest5');
+    if (q && m) res.innerText = "Q = " + (q * m).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+
+// 6. Плавление
+function calcT6() {
+    const lam = document.getElementById('t6_lam').value;
+    const m = document.getElementById('t6_m').value;
+    const res = document.getElementById('rest6');
+    if (lam && m) res.innerText = "Q = " + (lam * m).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+
+// 7. Испарение
+function calcT7() {
+    const l = document.getElementById('t7_l').value;
+    const m = document.getElementById('t7_m').value;
+    const res = document.getElementById('rest7');
+    if (l && m) res.innerText = "Q = " + (l * m).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+
+// 8. Абсолютная влажность
+function calcT8() {
+    const m = document.getElementById('t8_m').value;
+    const v = document.getElementById('t8_v').value;
+    const res = document.getElementById('rest8');
+    if (m && v && v != 0) res.innerText = "ρ = " + (m / v).toFixed(4) + " кг/м³";
+    else res.innerText = "Ошибка!";
+}
+
+// 9. Относительная влажность
+function calcT9() {
+    const p = document.getElementById('t9_p').value;
+    const p0 = document.getElementById('t9_p0').value;
+    const res = document.getElementById('rest9');
+    if (p && p0 && p0 != 0) res.innerText = "φ = " + ((p / p0) * 100).toFixed(1) + " %";
+    else res.innerText = "Ошибка!";
+}
+
+// 10. КПД
+function calcT10() {
+    const a = document.getElementById('t10_a').value;
+    const q1 = document.getElementById('t10_q1').value;
+    const res = document.getElementById('rest10');
+    if (a && q1 && q1 != 0) res.innerText = "КПД = " + ((a / q1) * 100).toFixed(1) + " %";
+    else res.innerText = "Ошибка!";
+}
+
+// 11. Баланс
+function calcT11() {
+    const qpol = document.getElementById('t11_qpol').value;
+    const qotd = document.getElementById('t11_qotd').value;
+    const res = document.getElementById('rest11');
+    if (qpol !== "" && qotd !== "") {
+        if (Math.abs(qpol) === Math.abs(qotd)) {
+            res.innerText = "Баланс сошёлся!";
+            res.style.color = "green";
+        } else {
+            res.innerText = "Не сходится! Разница: " + Math.abs(Math.abs(qpol) - Math.abs(qotd)) + " Дж";
+            res.style.color = "red";
+        }
+    } else res.innerText = "Введите оба значения!";
+}
+
+	// --- ЭЛЕКТРИЧЕСКИЕ ЯВЛЕНИЯ: ДИНАМИЧЕСКИЕ ФУНКЦИИ ---
+
+// Функция добавления нового инпута (до 100 штук)
+function addInput(containerId, prefix, unit) {
+    const container = document.getElementById(containerId);
+    const count = container.getElementsByTagName('input').length;
+    if (count >= 100) {
+        alert("Достигнут лимит в 100 элементов!");
+        return;
+    }
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.placeholder = `${prefix}ₙ (доп. элемент)`; // Для красоты
+    container.appendChild(input);
+}
+
+// Сумматор для динамических полей (Напряжение послед., Сопротивление послед., Сила тока паралл.)
+function calcSumDyn(containerId, resId, unit) {
+    const inputs = document.getElementById(containerId).getElementsByTagName('input');
+    let sum = 0;
+    let hasVal = false;
+    for(let i = 0; i < inputs.length; i++) {
+        if(inputs[i].value !== "") {
+            sum += parseFloat(inputs[i].value);
+            hasVal = true;
+        }
+    }
+    const res = document.getElementById(resId);
+    if(hasVal) res.innerText = "Общее значение: " + sum.toFixed(2) + " " + unit;
+    else res.innerText = "Введите данные!";
+}
+
+// Равенство для динамических полей (Сила тока послед., Напряжение паралл.)
+function calcEqDyn(containerId, resId, unit) {
+    const inputs = document.getElementById(containerId).getElementsByTagName('input');
+    let val = null;
+    for(let i = 0; i < inputs.length; i++) {
+        if(inputs[i].value !== "") {
+            val = parseFloat(inputs[i].value);
+            break; // Берем первое введенное значение, так как они все равны
+        }
+    }
+    const res = document.getElementById(resId);
+    if(val !== null) res.innerText = "Общее значение: " + val + " " + unit + " (одинаково для всех)";
+    else res.innerText = "Введите хотя бы одно значение!";
+}
+
+// Сложный расчет: Параллельное сопротивление (1/R = 1/R1 + 1/R2...)
+function calcParResDyn(containerId, resId) {
+    const inputs = document.getElementById(containerId).getElementsByTagName('input');
+    let invSum = 0;
+    let hasVal = false;
+    const res = document.getElementById(resId);
+    
+    for(let i = 0; i < inputs.length; i++) {
+        if(inputs[i].value !== "") {
+            let val = parseFloat(inputs[i].value);
+            if(val === 0) {
+                res.innerText = "Сопротивление не может быть равно 0!";
+                return;
+            }
+            invSum += 1 / val;
+            hasVal = true;
+        }
+    }
+    
+    if(hasVal && invSum > 0) res.innerText = "Общее R: " + (1 / invSum).toFixed(3) + " Ом";
+    else res.innerText = "Введите данные!";
+}
+
+// --- ЭЛЕКТРИЧЕСКИЕ ЯВЛЕНИЯ: ОБЫЧНЫЕ КАРТОЧКИ ---
+
+function calcE1() {
+    const q1 = document.getElementById('e1_q1').value;
+    const q2 = document.getElementById('e1_q2').value;
+    const res = document.getElementById('rese1');
+    if (q1 !== "" && q2 !== "") res.innerText = "Сумма: " + (parseFloat(q1) + parseFloat(q2)).toFixed(2) + " Кл";
+    else res.innerText = "Введите данные!";
+}
+function calcE2() {
+    const q = document.getElementById('e2_q').value;
+    const t = document.getElementById('e2_t').value;
+    const res = document.getElementById('rese2');
+    if (q && t && t != 0) res.innerText = "I = " + (q / t).toFixed(2) + " А";
+    else res.innerText = "Ошибка!";
+}
+function calcE3() {
+    const a = document.getElementById('e3_a').value;
+    const q = document.getElementById('e3_q').value;
+    const res = document.getElementById('rese3');
+    if (a && q && q != 0) res.innerText = "U = " + (a / q).toFixed(2) + " В";
+    else res.innerText = "Ошибка!";
+}
+function calcE4() {
+    const p = document.getElementById('e4_p').value;
+    const l = document.getElementById('e4_l').value;
+    const s = document.getElementById('e4_s').value;
+    const res = document.getElementById('rese4');
+    if (p && l && s && s != 0) res.innerText = "R = " + ((p * l) / s).toFixed(2) + " Ом";
+    else res.innerText = "Ошибка!";
+}
+function calcE5() {
+    const u = document.getElementById('e5_u').value;
+    const r = document.getElementById('e5_r').value;
+    const res = document.getElementById('rese5');
+    if (u && r && r != 0) res.innerText = "I = " + (u / r).toFixed(2) + " А";
+    else res.innerText = "Ошибка!";
+}
+function calcE12() {
+    const u = document.getElementById('e12_u').value;
+    const i = document.getElementById('e12_i').value;
+    const t = document.getElementById('e12_t').value;
+    const res = document.getElementById('rese12');
+    if (u && i && t) res.innerText = "A = " + (u * i * t).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+function calcE13() {
+    const a = document.getElementById('e13_a').value;
+    const t = document.getElementById('e13_t').value;
+    const res = document.getElementById('rese13');
+    if (a && t && t != 0) res.innerText = "P = " + (a / t).toFixed(2) + " Вт";
+    else res.innerText = "Ошибка!";
+}
+function calcE14() {
+    const i = document.getElementById('e14_i').value;
+    const r = document.getElementById('e14_r').value;
+    const t = document.getElementById('e14_t').value;
+    const res = document.getElementById('rese14');
+    if (i && r && t) res.innerText = "Q = " + (i * i * r * t).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+function calcE15() {
+    const p = document.getElementById('e15_p').value;
+    const t = document.getElementById('e15_t').value;
+    const res = document.getElementById('rese15');
+    if (p && t) res.innerText = "E = " + (p * t).toFixed(2) + " Дж";
+    else res.innerText = "Ошибка!";
+}
+
+// --- МАГНИТНЫЕ ЯВЛЕНИЯ ---
+
+function calcM3() {
+    const f = document.getElementById('m3_f').value;
+    const i = document.getElementById('m3_i').value;
+    const l = document.getElementById('m3_l').value;
+    const res = document.getElementById('resm3');
+    if (f && i && l && i != 0 && l != 0) res.innerText = "B = " + (f / (i * l)).toFixed(4) + " Тл";
+    else res.innerText = "Ошибка в данных!";
+}
+
+function calcM5() {
+    const l = document.getElementById('m5_l').value;
+    const i = document.getElementById('m5_i').value;
+    const res = document.getElementById('resm5');
+    if (l && i) res.innerText = "Eм = " + (0.5 * l * i * i).toFixed(4) + " Дж";
+    else res.innerText = "Заполните поля!";
+}
+
+function calcM6() {
+    const im = document.getElementById('m6_im').value;
+    const res = document.getElementById('resm6');
+    if (im) res.innerText = "I ≈ " + (im / Math.sqrt(2)).toFixed(2) + " А";
+    else res.innerText = "Введите Iₘ!";
+}
+
+function calcM7() {
+    const um = document.getElementById('m7_um').value;
+    const res = document.getElementById('resm7');
+    if (um) res.innerText = "U ≈ " + (um / Math.sqrt(2)).toFixed(2) + " В";
+    else res.innerText = "Введите Uₘ!";
+}
+
+function calcM8() {
+    const v1 = document.getElementById('m8_v1').value;
+    const v2 = document.getElementById('m8_v2').value;
+    const res = document.getElementById('resm8');
+    if (v1 && v2 && v2 != 0) res.innerText = "k = " + (v1 / v2).toFixed(2);
+    else res.innerText = "Ошибка!";
+}
+
+
+
+
+
+
+
+        // ПОИСК И КРЕСТИК
+const searchInput = document.getElementById('formulaSearch');
+const clearBtn = document.getElementById('clearSearch');
+const suggList = document.getElementById('searchSuggestions');
+const cards = document.querySelectorAll('details');
+
+// 1. ИСПРАВЛЕНИЕ: Хватаем ВООБЩЕ ВСЕ заголовки и подзаголовки (h2, h3, h4 и твои классы)
+const titles = document.querySelectorAll('.section-title, h2, h3, h4, .category-title');
+
+searchInput.addEventListener('input', function() {
+    const val = this.value.toLowerCase().trim();
+    clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+    suggList.innerHTML = '';
+
+    // Если поиск пустой - показываем всё обратно
+    if (val.length < 1) {
+        suggList.style.display = 'none';
+        cards.forEach(c => c.style.display = 'block');
+        titles.forEach(t => t.style.display = 'block');
+        return;
+    }
+
+    // 2. Скрываем АБСОЛЮТНО ВСЕ заголовки и подзаголовки, как ты просил
+    titles.forEach(t => t.style.display = 'none');
+
+    cards.forEach(card => {
+        // Добавил toLowerCase() на всякий случай, чтобы регистр букв не ломал поиск
+        const name = card.getAttribute('data-name').toLowerCase(); 
+        
+        if (name.includes(val)) {
+            // Если нашли совпадение - карточка остается на экране
+            card.style.display = 'block';
+
+            const li = document.createElement('li');
+            li.innerText = card.querySelector('summary').innerText;
+            li.onclick = () => {
+    searchInput.value = li.innerText;
+    suggList.style.display = 'none';
+    clearBtn.style.display = 'block'; // Показываем крестик
+
+    // Прячем всё лишнее
+    cards.forEach(c => c.style.display = 'none');
+    titles.forEach(t => t.style.display = 'none');
+
+    // Показываем и подсвечиваем выбранную
+    card.style.display = 'block';
+    card.setAttribute('open', 'true');
+    
+    // Единый стиль подсветки
+    card.style.border = "3px solid #3498db";
+    card.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+    card.style.borderRadius = "10px";
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+            suggList.appendChild(li);
+        } else {
+            // Если совпадения нет - прячем карточку, чтобы не мешалась
+            card.style.display = 'none';
+        }
+    });
+
+    suggList.style.display = suggList.children.length > 0 ? 'block' : 'none';
+});
+
+clearBtn.onclick = () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    suggList.style.display = 'none';
+    
+    cards.forEach(c => {
+        c.style.display = 'block';
+        
+        // ВМЕСТО "none" ПИШЕМ ПУСТУЮ СТРОКУ ""
+        // Это скажет браузеру: "Забудь, что я тут рисовал через JS, верни как было в CSS"
+        c.style.border = ""; 
+        c.style.boxShadow = "";
+        c.style.backgroundColor = ""; // если менял фон, тоже очищаем
+        
+        c.removeAttribute('open');
+    });
+
+    titles.forEach(t => t.style.display = 'block');
+    searchInput.focus();
+};
+</script>
+<script>
+function handleGlobalSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let findMe = urlParams.get('find');
+
+    if (findMe) {
+        findMe = decodeURIComponent(findMe).trim();
+        
+        // 1. Находим элементы локального поиска на странице
+        const searchInput = document.getElementById('formulaSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        
+        // 2. Вставляем текст в строку поиска, чтобы пользователь видел, что он искал
+        if (searchInput) {
+            searchInput.value = findMe;
+        }
+        
+        // 3. Показываем кнопку "крестик"
+        if (clearBtn) {
+            clearBtn.style.display = 'block';
+        }
+
+        const findMeLower = findMe.toLowerCase();
+        const summaries = document.querySelectorAll('summary');
+        const allCards = document.querySelectorAll('details');
+        const allTitles = document.querySelectorAll('h2, h3, h4, .section-title, .category-title');
+
+        let foundCard = null;
+
+        // Ищем нужную карточку
+        summaries.forEach(summary => {
+            const cardText = summary.innerText.trim().toLowerCase();
+            if (cardText === findMeLower || cardText.includes(findMeLower)) {
+                foundCard = summary.parentElement;
+            }
+        });
+
+        if (foundCard) {
+            // Прячем всё лишнее (заголовки и другие карточки)
+            allTitles.forEach(t => t.style.display = 'none');
+            allCards.forEach(c => c.style.display = 'none');
+
+            // Показываем только результат
+            foundCard.style.display = 'block';
+            foundCard.open = true;
+
+            setTimeout(() => {
+                foundCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                foundCard.style.border = "3px solid #3498db";
+                foundCard.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+                foundCard.style.borderRadius = "10px";
+            }, 300);
+        }
+    }
+}
+
+// Привязываем запуск к загрузке страницы
+window.addEventListener('load', handleGlobalSearch);
+</script>
+</body>
+</html>

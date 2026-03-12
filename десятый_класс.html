@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 класс - Physics PRO</title>
+    <link rel="stylesheet" href="оформление.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <style>
+        /* Дополнительный стиль для заголовков разделов */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body class="class-10-page">
+
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <h1>10 класс</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">На главную</a>
+        <a href="седьмой_класс.html">7 класс</a>
+	<a href="восьмой_класс.html">8 класс</a>
+	<a href="девятый_класс.html">9 класс</a>
+	<a href="одиннадцатый_класс.html">11 класс</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="formulaSearch" placeholder="Поиск по темам 10 класса..." autocomplete="off">
+                <button id="clearSearch" class="clear-search" title="Очистить">&times;</button>
+            </div>
+            <ul id="searchSuggestions" class="suggestions-list"></ul>
+        </div>
+<h2 class="section-title">Кинематика</h2>
+
+<h3 style="text-align:center; color: var(--accent); margin: 20px 0 10px;">Прямолинейное равномерное движение</h3>
+<div class="grid">
+    <details data-name="скорость равномерного движения">
+        <summary>Скорость</summary>
+        <div class="content">
+            <div class="math">$$\vec{v} = \frac{\vec{s}}{t}$$</div>
+            <p>Скорость — это отношение перемещения ко времени, за которое оно совершено.</p>
+            <div class="calc-box">
+                <input type="number" id="k1_s" placeholder="s (м)">
+                <input type="number" id="k1_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcK1()">Рассчитать v</button>
+                <div id="resk1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="уравнение равномерного движения">
+        <summary>Уравнение движения</summary>
+        <div class="content">
+            <div class="math">$$x = x_0 + v_x t$$</div>
+            <p>Позволяет определить координату тела в любой момент времени.</p>
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin: 30px 0 10px;">Равноускоренное движение</h3>
+<div class="grid">
+    <details data-name="ускорение">
+        <summary>Ускорение</summary>
+        <div class="content">
+            <div class="math">$$\vec{a} = \frac{\vec{v} - \vec{v_0}}{t}$$</div>
+            <p>Изменение скорости в единицу времени.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="k3_v" placeholder="v (конечная)">
+                <input type="number" id="k3_v0" placeholder="v₀ (начальная)">
+                <input type="number" id="k3_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcK3()">Рассчитать a</button>
+                <div id="resk3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="скорость равноускоренного движения">
+        <summary>Скорость</summary>
+        <div class="content">
+            <div class="math">$$v = v_0 + at$$</div>
+        </div>
+    </details>
+
+    <details data-name="перемещение с временем">
+        <summary>Перемещение</summary>
+        <div class="content">
+            <div class="math">$$s = v_0 t + \frac{at^2}{2}$$</div>
+            <div class="calc-box">
+                <input type="number" id="k5_v0" placeholder="v₀">
+                <input type="number" id="k5_t" placeholder="t">
+                <input type="number" id="k5_a" placeholder="a">
+                <button class="calc-btn" onclick="calcK5()">Рассчитать s</button>
+                <div id="resk5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="перемещение без времени">
+        <summary>Перемещение</summary>
+        <div class="content">
+            <div class="math">$$s = \frac{v^2 - v_0^2}{2a}$$</div>
+        </div>
+    </details>
+
+    <details data-name="уравнение координаты равноускоренного движения">
+        <summary>Уравнение координаты</summary>
+        <div class="content">
+            <div class="math">$$x = x_0 + v_{0x} t + \frac{a_x t^2}{2}$$</div>
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin: 30px 0 10px;">Движение по окружности</h3>
+<div class="grid">
+    <details data-name="центростремительное ускорение">
+        <summary>Центрострем. ускорение</summary>
+        <div class="content">
+            <div class="math">$$a_c = \frac{v^2}{R} = \omega^2 R$$</div>
+            
+            <div class="calc-box">
+                <input type="number" id="k8_v" placeholder="v (лин.)">
+                <input type="number" id="k8_r" placeholder="R (радиус)">
+                <button class="calc-btn" onclick="calcK8()">Рассчитать a_c</button>
+                <div id="resk8" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="период и частота">
+        <summary>Период и Частота</summary>
+        <div class="content">
+            <div class="math">$$T = \frac{1}{\nu}, \quad \nu = \frac{1}{T}$$</div>
+        </div>
+    </details>
+
+    <details data-name="угловая скорость">
+        <summary>Угловая скорость</summary>
+        <div class="content">
+            <div class="math">$$\omega = \frac{2\pi}{T} = 2\pi\nu$$</div>
+            <div class="calc-box">
+                <input type="number" id="k10_t" placeholder="T (период)">
+                <button class="calc-btn" onclick="calcK10()">Рассчитать ω</button>
+                <div id="resk10" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="линейная скорость">
+        <summary>Линейная скорость</summary>
+        <div class="content">
+            <div class="math">$$v = \omega R$$</div>
+            
+        </div>
+    </details>
+
+    <details data-name="относительность движения">
+        <summary>Относительность движения</summary>
+        <div class="content">
+            <div class="math">$$\vec{v}_{абс} = \vec{v}_{отн} + \vec{v}_{пер}$$</div>
+            <p>Скорость тела относительно неподвижной СО равна векторной сумме скорости тела в подвижной СО и скорости самой подвижной СО.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="свободное падение">
+        <summary>Свободное падение</summary>
+        <div class="content">
+            <p>Движение под действием силы тяжести ($a = g \approx 9.8$ м/с²).</p>
+            <div class="math">$$h = v_0 t + \frac{gt^2}{2}; \quad v = v_0 + gt$$</div>
+             
+        </div>
+    </details>
+
+    <details data-name="движение тела брошенного под углом к горизонту">
+        <summary>Бросок под углом к горизонту</summary>
+        <div class="content">
+            <div class="math">$$L = \frac{v_0^2 \sin 2\alpha}{g} \quad H = \frac{v_0^2 \sin^2 \alpha}{2g}$$</div>
+            <p><b>L</b> — дальность, <b>H</b> — макс. высота.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="k_v0_proj" placeholder="v₀ (м/с)">
+                <input type="number" id="k_ang_proj" placeholder="α (градусы)">
+                <button class="calc-btn" onclick="calcProjectile()">Рассчитать L и H</button>
+                <div id="res_proj" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+
+
+    <details data-name="закон сохранения энергии с учетом трения">
+        <summary>ЗСЭ с учетом трения</summary>
+        <div class="content">
+            <div class="math">$$A_{тр} = E_{мех2} - E_{мех1}$$</div>
+            <p>Работа сил трения (неконсервативных сил) равна изменению полной механической энергии системы.</p>
+        </div>
+    </details>
+
+
+
+    <details data-name="момент силы плечо">
+        <summary>Момент силы и плечо</summary>
+        <div class="content">
+            <div class="math">$$M = F \cdot d$$</div>
+            <p><b>d</b> — кратчайшее расстояние от оси вращения до линии действия силы (плечо).</p>
+            <p><b>Условие равновесия:</b> $\sum M = 0$.</p>
+            
+        </div>
+    </details>
+</div>
+<h2 class="section-title">Динамика</h2>
+<div class="grid">
+
+    <details data-name="первый закон ньютона">
+        <summary>I закон Ньютона</summary>
+        <div class="content">
+            <p>Существуют системы отсчета (инерциальные), в которых тело сохраняет состояние покоя или равномерного прямолинейного движения, если на него не действуют силы или их действие скомпенсировано.</p>
+        </div>
+    </details>
+
+    <details data-name="второй закон ньютона">
+        <summary>II закон Ньютона</summary>
+        <div class="content">
+            <div class="math">$$\vec{F} = m\vec{a}$$</div>
+            <div class="calc-box">
+                <input type="number" id="dyn2_m" placeholder="m (кг)">
+                <input type="number" id="dyn2_a" placeholder="a (м/с²)">
+                <button class="calc-btn" onclick="calcDyn2()">Рассчитать F</button>
+                <div id="resdyn2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="третий закон ньютона">
+        <summary>III закон Ньютона</summary>
+        <div class="content">
+            <div class="math">$$\vec{F_1} = -\vec{F_2}$$</div>
+            <p>Действия тел друг на друга равны по модулю и противоположны по направлению.</p>
+        </div>
+    </details>
+
+    <details data-name="закон всемирного тяготения">
+        <summary>Закон всемирного тяготения</summary>
+        <div class="content">
+            <div class="math">$$F = G \frac{m_1 m_2}{r^2}$$</div>
+            <div class="calc-box">
+                <input type="number" id="dyn4_m1" placeholder="m₁ (кг)">
+                <input type="number" id="dyn4_m2" placeholder="m₂ (кг)">
+                <input type="number" id="dyn4_r" placeholder="r (м)">
+                <button class="calc-btn" onclick="calcDyn4()">Рассчитать F</button>
+                <div id="resdyn4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила тяжести">
+        <summary>Сила тяжести</summary>
+        <div class="content">
+            <div class="math">$$F = mg$$</div>
+            <div class="calc-box">
+                <input type="number" id="dyn5_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcDyn5()">Рассчитать F</button>
+                <div id="resdyn5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон гука сила упругости">
+        <summary>Закон Гука</summary>
+        <div class="content">
+            <div class="math">$$F_{упр} = k|x|$$</div>
+            <div class="calc-box">
+                <input type="number" id="dyn6_k" placeholder="k (Н/м)">
+                <input type="number" id="dyn6_x" placeholder="|x| (м)">
+                <button class="calc-btn" onclick="calcDyn6()">Рассчитать Fупр</button>
+                <div id="resdyn6" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила трения скольжения">
+        <summary>Сила трения скольжения</summary>
+        <div class="content">
+            <div class="math">$$F_{тр} = \mu N$$</div>
+            <div class="calc-box">
+                <input type="number" id="dyn7_mu" placeholder="μ (коэф.)">
+                <input type="number" id="dyn7_n" placeholder="N (Н)">
+                <button class="calc-btn" onclick="calcDyn7()">Рассчитать Fтр</button>
+                <div id="resdyn7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="вес тела">
+        <summary>Вес тела</summary>
+        <div class="content">
+            <div class="math">$$\vec{P} = m(\vec{g} - \vec{a})$$</div>
+            <p>Сила, с которой тело действует на опору или подвес. Учитывает ускорение опоры (перегрузка/невесомость).</p>
+        </div>
+    </details>
+
+    <details data-name="первая космическая скорость спутник">
+        <summary>Движение ИСЗ</summary>
+        <div class="content">
+            <div class="math">$$v_1 = \sqrt{\frac{GM}{R}} = \sqrt{gR} \approx 7.9 \text{ км/с}$$</div>
+            <p>Первая космическая скорость для орбиты вблизи поверхности Земли.</p>
+            <div class="calc-box">
+                <input type="number" id="dyn9_r" placeholder="Радиус орбиты R (м)">
+                <button class="calc-btn" onclick="calcDyn9()">Рассчитать v₁ (км/с)</button>
+                <div id="resdyn9" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Законы сохранения в механике</h2>
+<div class="grid">
+
+    <details data-name="импульс тела">
+        <summary>Импульс тела</summary>
+        <div class="content">
+            <div class="math">$$\vec{p} = m\vec{v}$$</div>
+            <p>Векторная величина, мера механического движения.</p>
+            <div class="calc-box">
+                <input type="number" id="s1_m" placeholder="m (кг)">
+                <input type="number" id="s1_v" placeholder="v (м/с)">
+                <button class="calc-btn" onclick="calcS1()">Рассчитать p</button>
+                <div id="ress1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон сохранения импульса">
+        <summary>ЗСИ</summary>
+        <div class="content">
+            <div class="math">$$\vec{p_1} + \vec{p_2} = \vec{p_1}' + \vec{p_2}'$$</div>
+            <p>В замкнутой системе суммарный импульс тел остается неизменным при любых взаимодействиях.</p>
+        </div>
+    </details>
+
+    <details data-name="механическая работа">
+        <summary>Механическая работа</summary>
+        <div class="content">
+            <div class="math">$$A = Fs \cos\alpha$$</div>
+            <p><b>α</b> — угол между направлением силы и перемещением.</p>
+            <div class="calc-box">
+                <input type="number" id="s3_f" placeholder="F (Н)">
+                <input type="number" id="s3_s" placeholder="s (м)">
+                <input type="number" id="s3_ang" placeholder="Угол α (град)" value="0">
+                <button class="calc-btn" onclick="calcS3()">Рассчитать A</button>
+                <div id="ress3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="мощность механика">
+        <summary>Мощность</summary>
+        <div class="content">
+            <div class="math">$$P = \frac{A}{t} = Fv \cos\alpha$$</div>
+            <p>Скорость совершения работы. (В некоторых учебниках обозначается как <b>N</b>).</p>
+            <div class="calc-box">
+                <input type="number" id="s4_a" placeholder="A (Дж)">
+                <input type="number" id="s4_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcS4()">Рассчитать P</button>
+                <div id="ress4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="кинетическая энергия">
+        <summary>Кинетическая энергия</summary>
+        <div class="content">
+            <div class="math">$$E_k = \frac{mv^2}{2}$$</div>
+            <p>Энергия движущегося тела.</p>
+            <div class="calc-box">
+                <input type="number" id="s5_m" placeholder="m (кг)">
+                <input type="number" id="s5_v" placeholder="v (м/с)">
+                <button class="calc-btn" onclick="calcS5()">Рассчитать Eₖ</button>
+                <div id="ress5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон сохранения энергии">
+        <summary>ЗСЭ</summary>
+        <div class="content">
+            <div class="math">$$E_k + E_p = \text{const}$$</div>
+            <p>В системе, где действуют только консервативные силы (тяжести, упругости), полная энергия сохраняется.</p>
+        </div>
+    </details>
+
+    <details data-name="потенциальная энергия тяжести">
+        <summary>Eₚ (Тяжести)</summary>
+        <div class="content">
+            <div class="math">$$E_p = mgh$$</div>
+            <div class="calc-box">
+                <input type="number" id="s7_m" placeholder="m (кг)">
+                <input type="number" id="s7_h" placeholder="h (м)">
+                <button class="calc-btn" onclick="calcS7()">Рассчитать Eₚ</button>
+                <div id="ress7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="потенциальная энергия упругости">
+        <summary>Eₚ (Упругости)</summary>
+        <div class="content">
+            <div class="math">$$E_p = \frac{kx^2}{2}$$</div>
+            <p>Энергия деформированной пружины.</p>
+            <div class="calc-box">
+                <input type="number" id="s8_k" placeholder="k (Н/м)">
+                <input type="number" id="s8_x" placeholder="x (смещение, м)">
+                <button class="calc-btn" onclick="calcS8()">Рассчитать Eₚ</button>
+                <div id="ress8" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Основы МКТ</h2>
+
+<div class="grid">
+    <details data-name="количество вещества">
+        <summary>Количество вещества</summary>
+        <div class="content">
+            <div class="math">$$\nu = \frac{m}{M} = \frac{N}{N_A}$$</div>
+            <p>Измеряется в молях. <b>M</b> — молярная масса, <b>Nₐ</b> — число Авогадро.</p>
+            <div class="calc-box">
+                <input type="number" id="mkt1_m" placeholder="m (г)">
+                <input type="number" id="mkt1_M" placeholder="M (г/моль)">
+                <button class="calc-btn" onclick="calcMKT1()">Рассчитать ν</button>
+                <div id="resmkt1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="число молекул">
+        <summary>Число молекул</summary>
+        <div class="content">
+            <div class="math">$$N = \nu \cdot N_A$$</div>
+            <p>Общее количество частиц в системе.</p>
+        </div>
+    </details>
+
+    <details data-name="давление через плотность и температуру">
+        <summary>Давление и плотность</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{\rho RT}{M}$$</div>
+            <p>Идеально подходит для задач, где не указан объем сосуда.</p>
+        </div>
+    </details>
+
+    <details data-name="основное уравнение мкт">
+        <summary>Основное уравнение МКТ</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{1}{3} n m_0 \overline{v^2} = nkT = \frac{2}{3} n \overline{E_k}$$</div>
+            <p><b>n</b> — концентрация молекул, <b>k</b> — постоянная Больцмана.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="средняя кинетическая энергия молекул">
+        <summary>Энергия молекул</summary>
+        <div class="content">
+            <div class="math">$$\overline{E_k} = \frac{3}{2} kT$$</div>
+            <p>Энергия зависит только от абсолютной температуры <b>T</b> (в Кельвинах!).</p>
+            <div class="calc-box">
+                <input type="number" id="mkt5_t" placeholder="T (Кельвины)">
+                <button class="calc-btn" onclick="calcMKT5()">Рассчитать Ek</button>
+                <div id="resmkt5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="уравнение менделеева клапейрона">
+        <summary>Менделеев — Клапейрон</summary>
+        <div class="content">
+            <div class="math">$$pV = \frac{m}{M} RT$$</div>
+            <p>Связывает все макропараметры идеального газа.</p>
+            <div class="calc-box">
+                <input type="number" id="mkt6_p" placeholder="p (Па)">
+                <input type="number" id="mkt6_v" placeholder="V (м³)">
+                <input type="number" id="mkt6_t" placeholder="T (К)">
+                <button class="calc-btn" onclick="calcMKT6()">Найти массу m (г)</button>
+                <div id="resmkt6" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="средняя квадратичная скорость молекул">
+        <summary>Скорость молекул</summary>
+        <div class="content">
+            <div class="math">$$v_{кв} = \sqrt{\frac{3RT}{M}}$$</div>
+            <blockquote>"Три кота (3kT) на мясо (m₀)" или "Три рта (3RT) на мясо (M)"</blockquote>
+            <div class="calc-box">
+                <input type="number" id="mkt7_t" placeholder="T (К)">
+                <input type="number" id="mkt7_M" placeholder="M (г/моль)">
+                <button class="calc-btn" onclick="calcMKT7()">Рассчитать v (м/с)</button>
+                <div id="resmkt7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="давление через плотность и скорость">
+        <summary>Давление и скорость</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{1}{3} \rho \overline{v^2}$$</div>
+        </div>
+    </details>
+
+    <details data-name="парциальное давление и влажность">
+        <summary>Влажность воздуха</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{\phi \cdot p_{нас}}{100\%}$$</div>
+            <p><b>φ</b> — относительная влажность, <b>p_нас</b> — давление насыщенного пара.</p>
+        </div>
+    </details>
+
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin: 30px 0 15px;">Изопроцессы</h3>
+<div class="grid">
+    <details data-name="изотермический процесс">
+        <summary>Изотермический (T=const)</summary>
+        <div class="content">
+            <div class="math">$$pV = \text{const}$$</div>
+            <p>Закон Бойля-Мариотта. График — гипербола (изотерма).</p>
+            
+
+
+
+        </div>
+    </details>
+
+    <details data-name="изобарный процесс">
+        <summary>Изобарный (p=const)</summary>
+        <div class="content">
+            <div class="math">$$\frac{V}{T} = \text{const}$$</div>
+            <p>Закон Гей-Люссака. График — прямая (изобара).</p>
+            
+        </div>
+    </details>
+
+    <details data-name="изохорный процесс">
+        <summary>Изохорный (V=const)</summary>
+        <div class="content">
+            <div class="math">$$\frac{p}{T} = \text{const}$$</div>
+            <p>Закон Шарля. График — прямая (изохора).</p>
+            
+        </div>
+    </details>
+</div>
+<h2 class="section-title">Основы термодинамики</h2>
+<div class="grid">
+
+    <details data-name="внутренняя энергия идеального одноатомного газа">
+        <summary>Внутренняя энергия</summary>
+        <div class="content">
+            <div class="math">$$U = \frac{3}{2} \frac{m}{M} RT$$</div>
+            <p>Суммарная энергия хаотического движения всех молекул газа. Зависит только от температуры.</p>
+            <div class="calc-box">
+                <input type="number" id="term1_m" placeholder="m (г)">
+                <input type="number" id="term1_M" placeholder="M (г/моль)">
+                <input type="number" id="term1_t" placeholder="T (К)">
+                <button class="calc-btn" onclick="calcTerm1()">Рассчитать U</button>
+                <div id="resterm1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="работа газа">
+        <summary>Работа газа</summary>
+        <div class="content">
+            <div class="math">$$A = p \Delta V$$</div>
+            <p>Работа совершается газом при расширении. На графике $pV$ это площадь под кривой процесса.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="term2_p" placeholder="p (Па)">
+                <input type="number" id="term2_dv" placeholder="ΔV (м³)">
+                <button class="calc-btn" onclick="calcTerm2()">Рассчитать A</button>
+                <div id="resterm2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="первый закон термодинамики">
+        <summary>I закон термодинамики</summary>
+        <div class="content">
+            <div class="math">$$Q = \Delta U + A$$</div>
+            <p>Количество теплоты, переданное системе, идет на изменение ее внутренней энергии и совершение системой работы.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="кпд тепловой машины">
+        <summary>КПД тепловой машины</summary>
+        <div class="content">
+            <div class="math">$$\eta = \frac{A}{Q_1} = \frac{Q_1 - Q_2}{Q_1}$$</div>
+            <p><b>Q₁</b> — тепло от нагревателя, <b>Q₂</b> — тепло, отданное холодильнику.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="term4_q1" placeholder="Q₁ (Дж)">
+                <input type="number" id="term4_q2" placeholder="Q₂ (Дж)">
+                <button class="calc-btn" onclick="calcTerm4()">Рассчитать η (%)</button>
+                <div id="resterm4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="кпд цикла карно">
+        <summary>КПД цикла Карно</summary>
+        <div class="content">
+            <div class="math">$$\eta = \frac{T_1 - T_2}{T_1}$$</div>
+            <p>Максимально возможный КПД для тепловой машины. <b>T₁</b> и <b>T₂</b> — температуры нагревателя и холодильника в Кельвинах.</p>
+            
+
+
+
+            <div class="calc-box">
+                <input type="number" id="term5_t1" placeholder="T₁ (К)">
+                <input type="number" id="term5_t2" placeholder="T₂ (К)">
+                <button class="calc-btn" onclick="calcTerm5()">Рассчитать η (%)</button>
+                <div id="resterm5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Агрегатные состояния и фазовые переходы</h2>
+
+
+
+<div class="grid">
+
+    <details data-name="нагревание охлаждение количество теплоты">
+        <summary>Нагревание и охлаждение</summary>
+        <div class="content">
+            <div class="math">$$Q = cm \Delta t$$</div>
+            <p><b>c</b> — удельная теплоёмкость вещества. Энергия, необходимая для изменения температуры.</p>
+            <div class="calc-box">
+                <input type="number" id="ph1_c" placeholder="c (Дж/кг·°C)">
+                <input type="number" id="ph1_m" placeholder="m (кг)">
+                <input type="number" id="ph1_dt" placeholder="Δt (°C)">
+                <button class="calc-btn" onclick="calcPh1()">Рассчитать Q</button>
+                <div id="resph1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="плавление кристаллизация удельная теплота">
+        <summary>Плавление и кристаллизация</summary>
+        <div class="content">
+            <div class="math">$$Q = \lambda m$$</div>
+            <p><b>λ</b> — удельная теплота плавления. Температура при этом процессе <b>не меняется</b>.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="ph2_l" placeholder="λ (Дж/кг)">
+                <input type="number" id="ph2_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcPh2()">Рассчитать Q</button>
+                <div id="resph2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="парообразование конденсация удельная теплота">
+        <summary>Парообразование</summary>
+        <div class="content">
+            <div class="math">$$Q = Lm$$</div>
+            <p><b>L</b> — удельная теплота парообразования. Энергия на превращение жидкости в пар.</p>
+            <div class="calc-box">
+                <input type="number" id="ph3_L" placeholder="L (Дж/кг)">
+                <input type="number" id="ph3_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcPh3()">Рассчитать Q</button>
+                <div id="resph3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сгорание топлива удельная теплота">
+        <summary>Сгорание топлива</summary>
+        <div class="content">
+            <div class="math">$$Q = qm$$</div>
+            <p><b>q</b> — удельная теплота сгорания топлива.</p>
+            <div class="calc-box">
+                <input type="number" id="ph4_q" placeholder="q (Дж/кг)">
+                <input type="number" id="ph4_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcPh4()">Рассчитать Q</button>
+                <div id="resph4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="относительная влажность воздуха">
+        <summary>Относительная влажность</summary>
+        <div class="content">
+            <div class="math">$$\phi = \frac{p}{p_{нас}} \cdot 100\%$$</div>
+            <p>Отношение давления пара к давлению насыщенного пара при той же температуре.</p>
+            <div class="calc-box">
+                <input type="number" id="ph5_p" placeholder="p (Па)">
+                <input type="number" id="ph5_pnas" placeholder="p_нас (Па)">
+                <button class="calc-btn" onclick="calcPh5()">Рассчитать φ (%)</button>
+                <div id="resph5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Электростатика и основы цепей</h2>
+<div class="grid">
+
+    <details data-name="закон кулона">
+        <summary>Закон Кулона</summary>
+        <div class="content">
+            <div class="math">$$F = k \frac{|q_1| |q_2|}{\varepsilon r^2}$$</div>
+            <p>Сила взаимодействия двух точечных зарядов. <b>ε</b> — диэлектрическая проницаемость среды.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="el1_q1" placeholder="q1 (Кл)">
+                <input type="number" id="el1_q2" placeholder="q2 (Кл)">
+                <input type="number" id="el1_r" placeholder="r (м)">
+                <button class="calc-btn" onclick="calcEl1()">Рассчитать F</button>
+                <div id="resel1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="напряженность электрического поля">
+        <summary>Напряженность поля</summary>
+        <div class="content">
+            <div class="math">$$\vec{E} = \frac{\vec{F}}{q}$$</div>
+            <p>Силовая характеристика поля. Показывает, с какой силой поле действует на единичный положительный заряд.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="потенциал электрического поля">
+        <summary>Потенциал</summary>
+        <div class="content">
+            <div class="math">$$\phi = \frac{W_p}{q}$$</div>
+            <p>Энергетическая характеристика поля в данной точке.</p>
+        </div>
+    </details>
+
+    <details data-name="напряжение разность потенциалов">
+        <summary>Напряжение</summary>
+        <div class="content">
+            <div class="math">$$U = \phi_1 - \phi_2 = \frac{A}{q}$$</div>
+            <p>Разность потенциалов между двумя точками поля.</p>
+        </div>
+    </details>
+
+    <details data-name="связь напряженности и напряжения">
+        <summary>Связь E и U</summary>
+        <div class="content">
+            <div class="math">$$E = \frac{U}{d}$$</div>
+            <p>Справедливо для однородного электрического поля (например, внутри конденсатора).</p>
+        </div>
+    </details>
+
+    <details data-name="электроемкость определение">
+        <summary>Электроемкость</summary>
+        <div class="content">
+            <div class="math">$$C = \frac{q}{U}$$</div>
+            <p>Способность проводника накапливать заряд. Измеряется в Фарадах (Ф).</p>
+        </div>
+    </details>
+
+    <details data-name="емкость плоского конденсатора формула">
+        <summary>Плоский конденсатор</summary>
+        <div class="content">
+            <div class="math">$$C = \frac{\varepsilon \varepsilon_0 S}{d}$$</div>
+            <p>Зависит от площади пластин <b>S</b> и расстояния между ними <b>d</b>.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="el7_s" placeholder="S (м²)">
+                <input type="number" id="el7_d" placeholder="d (м)">
+                <button class="calc-btn" onclick="calcEl7()">Рассчитать C (пФ)</button>
+                <div id="resel7" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="энергия заряженного конденсатора">
+        <summary>Энергия конденсатора</summary>
+        <div class="content">
+            <div class="math">$$W = \frac{qU}{2} = \frac{CU^2}{2} = \frac{q^2}{2C}$$</div>
+        </div>
+    </details>
+
+    <details data-name="закон ома для неоднородного участка цепи">
+        <summary>Ом для неоднородной цепи</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{\phi_1 - \phi_2 + \mathcal{E}}{R + r}$$</div>
+            <p>Применяется, когда на участке цепи есть и сопротивление, и источник тока (ЭДС).</p>
+            
+        </div>
+    </details>
+
+
+    <details data-name="напряженность поля точечного заряда">
+        <summary>Поле точечного заряда</summary>
+        <div class="content">
+            <div class="math">$$E = k \frac{|q|}{r^2}$$</div>
+        </div>
+    </details>
+
+    <details data-name="работа сил электростатического поля">
+        <summary>Работа поля</summary>
+        <div class="content">
+            <div class="math">$$A = q(\phi_1 - \phi_2) = qU$$</div>
+            <p>Работа не зависит от формы траектории (поле потенциально).</p>
+        </div>
+    </details>
+
+    <details data-name="зависимость сопротивления от температуры">
+        <summary>Сопротивление и нагрев</summary>
+        <div class="content">
+            <div class="math">$$R = R_0 (1 + \alpha \Delta t)$$</div>
+            <p><b>α</b> — температурный коэффициент сопротивления. Для металлов $R$ растет при нагреве.</p>
+        </div>
+    </details>
+
+    <details data-name="кпд источника постоянного тока">
+        <summary>КПД источника</summary>
+        <div class="content">
+            <div class="math">$$\eta = \frac{R}{R + r}$$</div>
+            <p>Отношение полезного сопротивления нагрузки к полному сопротивлению цепи.</p>
+            <div class="calc-box">
+                <input type="number" id="el14_R" placeholder="R (внешнее)">
+                <input type="number" id="el14_r" placeholder="r (внутреннее)">
+                <button class="calc-btn" onclick="calcEl14()">Рассчитать η (%)</button>
+                <div id="resel14" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Постоянный электрический ток</h2>
+<div class="grid">
+
+    <details data-name="сила тока определение">
+        <summary>Сила тока</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{\Delta q}{\Delta t}$$</div>
+            <p>Заряд, проходящий через поперечное сечение проводника в единицу времени. Измеряется в Амперах (А).</p>
+            <div class="calc-box">
+                <input type="number" id="dc1_q" placeholder="q (Кл)">
+                <input type="number" id="dc1_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcDC1()">Рассчитать I</button>
+                <div id="resdc1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон ома для участка цепи">
+        <summary>Закон Ома</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{U}{R}$$</div>
+            <p>Фундаментальная связь тока, напряжения и сопротивления.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="dc2_u" placeholder="U (В)">
+                <input type="number" id="dc2_r" placeholder="R (Ом)">
+                <button class="calc-btn" onclick="calcDC2()">Рассчитать I</button>
+                <div id="resdc2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сопротивление проводника формула">
+        <summary>Сопротивление</summary>
+        <div class="content">
+            <div class="math">$$R = \rho \frac{l}{S}$$</div>
+            <p><b>ρ</b> — удельное сопротивление, <b>l</b> — длина, <b>S</b> — площадь сечения.</p>
+            <div class="calc-box">
+                <input type="number" id="dc3_l" placeholder="длина l (м)">
+                <input type="number" id="dc3_s" placeholder="сечение S (мм²)">
+                <button class="calc-btn" onclick="calcDC3()">Рассчитать R (для меди)</button>
+                <div id="resdc3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="работа электрического тока">
+        <summary>Работа тока</summary>
+        <div class="content">
+            <div class="math">$$A = UIt$$</div>
+            <p>Энергия, которую переносит или преобразует ток за время t. Измеряется в Джоулях (Дж).</p>
+        </div>
+    </details>
+
+    <details data-name="мощность электрического тока">
+        <summary>Мощность</summary>
+        <div class="content">
+            <div class="math">$$P = UI = I^2 R = \frac{U^2}{R}$$</div>
+            <p>Скорость преобразования электрической энергии. Измеряется в Ваттах (Вт).</p>
+            <div class="calc-box">
+                <input type="number" id="dc5_u" placeholder="U (В)">
+                <input type="number" id="dc5_i" placeholder="I (А)">
+                <button class="calc-btn" onclick="calcDC5()">Рассчитать P</button>
+                <div id="resdc5" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="закон джоуля ленца">
+        <summary>Закон Джоуля — Ленца</summary>
+        <div class="content">
+            <div class="math">$$Q = I^2 Rt$$</div>
+            <p>Количество теплоты, выделяемое проводником при прохождении тока.</p>
+        </div>
+    </details>
+
+    <details data-name="последовательное соединение проводников">
+        <summary>Последовательное соед.</summary>
+        <div class="content">
+            <p>Ток идет по одному пути:</p>
+            <ul>
+                <li><b>I = const</b> (одинаков везде)</li>
+                <li><b>U = U₁ + U₂</b> (складывается)</li>
+                <li><b>R = R₁ + R₂</b> (растет)</li>
+            </ul>
+            
+        </div>
+    </details>
+
+    <details data-name="параллельное соединение проводников">
+        <summary>Параллельное соед.</summary>
+        <div class="content">
+            <p>Ток разветвляется:</p>
+            <ul>
+                <li><b>U = const</b> (одинаково на ветках)</li>
+                <li><b>I = I₁ + I₂</b> (складывается)</li>
+                <li><b>1/R = 1/R₁ + 1/R₂</b> (общее R падает)</li>
+            </ul>
+            
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Законы тока для полной цепи</h2>
+<div class="grid">
+
+    <details data-name="эдс электродвижущая сила">
+        <summary>ЭДС</summary>
+        <div class="content">
+            <div class="math">$$\mathcal{E} = \frac{A_{стор}}{q}$$</div>
+            <p>Работа сторонних сил по перемещению единичного положительного заряда. Характеризует сам источник тока.</p>
+        </div>
+    </details>
+
+    <details data-name="закон ома для полной цепи">
+        <summary>Закон Ома для полной цепи</summary>
+        <div class="content">
+            <div class="math">$$I = \frac{\mathcal{E}}{R + r}$$</div>
+            <p><b>R</b> — внешнее сопротивление (нагрузка), <b>r</b> — внутреннее сопротивление источника.</p>
+            <div class="calc-box">
+                <input type="number" id="fc2_e" placeholder="ЭДС ℰ (В)">
+                <input type="number" id="fc2_R" placeholder="R внешнее (Ом)">
+                <input type="number" id="fc2_r" placeholder="r внутр. (Ом)">
+                <button class="calc-btn" onclick="calcFullOhm()">Рассчитать I</button>
+                <div id="resfc2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="ток короткого замыкания">
+        <summary>Ток КЗ</summary>
+        <div class="content">
+            <div class="math">$$I_{кз} = \frac{\mathcal{E}}{r}$$</div>
+            <p>Максимальный ток, который может выдать источник при внешнем сопротивлении R = 0. Очень опасный режим!</p>
+            [Image showing a battery short-circuited with a simple wire]
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Токи в различных средах</h2>
+<div class="grid">
+
+    <details data-name="закон электролиза фарадея масса вещества">
+        <summary>Закон электролиза Фарадея</summary>
+        <div class="content">
+            <div class="math">$$m = kIt = kq$$</div>
+            <p>Масса вещества, выделившегося на электроде, прямо пропорциональна заряду, прошедшему через электролит. <b>k</b> — электрохимический эквивалент.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="med_k" placeholder="k (мг/Кл)">
+                <input type="number" id="med_i" placeholder="I (А)">
+                <input type="number" id="med_t" placeholder="t (с)">
+                <button class="calc-btn" onclick="calcElectrolysis()">Рассчитать m (мг)</button>
+                <div id="resmed1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="носители заряда в различных средах">
+        <summary>Носители заряда в средах</summary>
+        <div class="content">
+            <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <tr style="border-bottom: 1px solid var(--accent);">
+                    <th style="text-align: left; padding: 5px;">Среда</th>
+                    <th style="text-align: left; padding: 5px;">Носители</th>
+                </tr>
+                <tr>
+                    <td>Металлы</td>
+                    <td>Электроны</td>
+                </tr>
+                <tr>
+                    <td>Электролиты</td>
+                    <td>Ионы (+ и -)</td>
+                </tr>
+                <tr>
+                    <td>Газы</td>
+                    <td>Ионы и электроны</td>
+                </tr>
+                <tr>
+                    <td>Полупроводники</td>
+                    <td>Электроны и «дырки»</td>
+                </tr>
+            </table>
+            
+        </div>
+    </details>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </div>
+
+    <footer>
+        <p style="text-align:center">&copy; 2026 Справочник Physics PRO.</p>
+    </footer>
+
+    <script>
+        // ТЕМА
+        const themeBtn = document.getElementById('themeBtn');
+        function updateBtnIcon() {
+            themeBtn.innerText = document.documentElement.hasAttribute('data-theme') ? '☀️' : '🌙';
+        }
+        updateBtnIcon();
+        function toggleTheme() {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateBtnIcon();
+        }
+
+        // КАЛЬКУЛЯТОРЫ
+
+// --- КИНЕМАТИКА ---
+
+function calcK1() {
+    const s = document.getElementById('k1_s').value;
+    const t = document.getElementById('k1_t').value;
+    const res = document.getElementById('resk1');
+    if (s && t && t != 0) res.innerText = "v = " + (s / t).toFixed(2) + " м/с";
+    else res.innerText = "Ошибка!";
+}
+
+function calcK3() {
+    const v = document.getElementById('k3_v').value;
+    const v0 = document.getElementById('k3_v0').value;
+    const t = document.getElementById('k3_t').value;
+    const res = document.getElementById('resk3');
+    if (t && t != 0) res.innerText = "a = " + ((v - v0) / t).toFixed(2) + " м/с²";
+    else res.innerText = "Ошибка!";
+}
+
+function calcK5() {
+    const v0 = Number(document.getElementById('k5_v0').value);
+    const t = Number(document.getElementById('k5_t').value);
+    const a = Number(document.getElementById('k5_a').value);
+    const res = document.getElementById('resk5');
+    const s = v0 * t + (a * t * t) / 2;
+    res.innerText = "s = " + s.toFixed(2) + " м";
+}
+
+function calcK8() {
+    const v = document.getElementById('k8_v').value;
+    const r = document.getElementById('k8_r').value;
+    const res = document.getElementById('resk8');
+    if (v && r && r != 0) res.innerText = "a_c = " + (v * v / r).toFixed(2) + " м/с²";
+    else res.innerText = "Ошибка!";
+}
+
+function calcK10() {
+    const t = document.getElementById('k10_t').value;
+    const res = document.getElementById('resk10');
+    if (t && t != 0) res.innerText = "ω = " + (2 * Math.PI / t).toFixed(3) + " рад/с";
+    else res.innerText = "Ошибка!";
+}
+// --- ДОПОЛНИТЕЛЬНЫЕ РАСЧЕТЫ ---
+
+function calcProjectile() {
+    const v0 = document.getElementById('k_v0_proj').value;
+    const alphaDeg = document.getElementById('k_ang_proj').value;
+    const res = document.getElementById('res_proj');
+    const g = 9.8;
+
+    if (v0 && alphaDeg) {
+        const rad = alphaDeg * Math.PI / 180;
+        // Дальность L = (v0^2 * sin(2a)) / g
+        const L = (Math.pow(v0, 2) * Math.sin(2 * rad)) / g;
+        // Высота H = (v0^2 * sin^2(a)) / 2g
+        const H = (Math.pow(v0, 2) * Math.pow(Math.sin(rad), 2)) / (2 * g);
+        
+        res.innerHTML = `Дальность L: ${L.toFixed(2)} м <br> Высота H: ${H.toFixed(2)} м`;
+    } else {
+        res.innerText = "Введите v₀ и угол!";
+    }
+}
+// --- ДИНАМИКА (ОСНОВНЫЕ РАСЧЕТЫ) ---
+const G_CONST_DYN = 6.6743e-11;
+const G_EARTH = 9.8;
+
+function calcDyn2() {
+    const m = document.getElementById('dyn2_m').value;
+    const a = document.getElementById('dyn2_a').value;
+    const res = document.getElementById('resdyn2');
+    if (m && a) res.innerText = "F = " + (m * a).toFixed(2) + " Н";
+    else res.innerText = "Заполните поля!";
+}
+
+function calcDyn4() {
+    const m1 = document.getElementById('dyn4_m1').value;
+    const m2 = document.getElementById('dyn4_m2').value;
+    const r = document.getElementById('dyn4_r').value;
+    const res = document.getElementById('resdyn4');
+    if (m1 && m2 && r && r != 0) {
+        const f = G_CONST_DYN * (m1 * m2) / (r * r);
+        res.innerText = "F = " + f.toExponential(3) + " Н";
+    } else res.innerText = "Ошибка!";
+}
+
+function calcDyn5() {
+    const m = document.getElementById('dyn5_m').value;
+    const res = document.getElementById('resdyn5');
+    if (m) res.innerText = "F = " + (m * G_EARTH).toFixed(2) + " Н";
+    else res.innerText = "Введите m!";
+}
+
+function calcDyn6() {
+    const k = document.getElementById('dyn6_k').value;
+    const x = document.getElementById('dyn6_x').value;
+    const res = document.getElementById('resdyn6');
+    if (k && x) res.innerText = "Fупр = " + (k * x).toFixed(2) + " Н";
+    else res.innerText = "Ошибка!";
+}
+
+function calcDyn7() {
+    const mu = document.getElementById('dyn7_mu').value;
+    const n = document.getElementById('dyn7_n').value;
+    const res = document.getElementById('resdyn7');
+    if (mu && n) res.innerText = "Fтр = " + (mu * n).toFixed(2) + " Н";
+    else res.innerText = "Ошибка!";
+}
+
+function calcDyn9() {
+    const r = document.getElementById('dyn9_r').value;
+    const res = document.getElementById('resdyn9');
+    const M_earth = 5.972e24; // Масса Земли
+    if (r && r != 0) {
+        // Считаем скорость в м/с, затем переводим в км/с
+        const v1 = Math.sqrt((G_CONST_DYN * M_earth) / r);
+        res.innerText = "v₁ ≈ " + (v1 / 1000).toFixed(2) + " км/с";
+    } else {
+        res.innerText = "Введите радиус R!";
+    }
+}
+// --- ЗАКОНЫ СОХРАНЕНИЯ ---
+
+function calcS1() {
+    const m = document.getElementById('s1_m').value;
+    const v = document.getElementById('s1_v').value;
+    const res = document.getElementById('ress1');
+    if (m && v) res.innerText = "p = " + (m * v).toFixed(2) + " кг·м/с";
+}
+
+function calcS3() {
+    const f = document.getElementById('s3_f').value;
+    const s = document.getElementById('s3_s').value;
+    const ang = document.getElementById('s3_ang').value;
+    const res = document.getElementById('ress3');
+    if (f && s) {
+        const rad = ang * Math.PI / 180;
+        const result = f * s * Math.cos(rad);
+        res.innerText = "A = " + result.toFixed(2) + " Дж";
+    }
+}
+
+function calcS4() {
+    const a = document.getElementById('s4_a').value;
+    const t = document.getElementById('s4_t').value;
+    const res = document.getElementById('ress4');
+    if (a && t && t != 0) res.innerText = "P = " + (a / t).toFixed(2) + " Вт";
+}
+
+function calcS5() {
+    const m = document.getElementById('s5_m').value;
+    const v = document.getElementById('s5_v').value;
+    const res = document.getElementById('ress5');
+    if (m && v) res.innerText = "Ek = " + (0.5 * m * v * v).toFixed(2) + " Дж";
+}
+
+function calcS7() {
+    const m = document.getElementById('s7_m').value;
+    const h = document.getElementById('s7_h').value;
+    const res = document.getElementById('ress7');
+    if (m && h) res.innerText = "Ep = " + (m * 9.8 * h).toFixed(2) + " Дж";
+}
+
+function calcS8() {
+    const k = document.getElementById('s8_k').value;
+    const x = document.getElementById('s8_x').value;
+    const res = document.getElementById('ress8');
+    if (k && x) res.innerText = "Ep = " + (0.5 * k * x * x).toFixed(2) + " Дж";
+}
+// --- ОСНОВЫ МКТ ---
+const R_GAS = 8.31;
+const K_BOLTZ = 1.38e-23;
+
+function calcMKT1() {
+    const m = document.getElementById('mkt1_m').value;
+    const M = document.getElementById('mkt1_M').value;
+    const res = document.getElementById('resmkt1');
+    if (m && M && M != 0) res.innerText = "ν = " + (m / M).toFixed(3) + " моль";
+    else res.innerText = "Ошибка!";
+}
+
+function calcMKT5() {
+    const t = document.getElementById('mkt5_t').value;
+    const res = document.getElementById('resmkt5');
+    if (t) {
+        const ek = 1.5 * K_BOLTZ * t;
+        res.innerText = "Ek = " + ek.toExponential(2) + " Дж";
+    }
+}
+
+function calcMKT6() {
+    const p = document.getElementById('mkt6_p').value;
+    const v = document.getElementById('mkt6_v').value;
+    const t = document.getElementById('mkt6_t').value;
+    const M = 28; // По умолчанию для азота/воздуха, можно усложнить
+    const res = document.getElementById('resmkt6');
+    if (p && v && t && t != 0) {
+        const m = (p * v * M) / (R_GAS * t);
+        res.innerText = "m ≈ " + m.toFixed(2) + " г (для M=28)";
+    } else res.innerText = "Заполните p, V, T!";
+}
+
+function calcMKT7() {
+    const t = document.getElementById('mkt7_t').value;
+    const M_g = document.getElementById('mkt7_M').value; // в г/моль
+    const res = document.getElementById('resmkt7');
+    if (t && M_g && M_g != 0) {
+        const M_kg = M_g / 1000; // переводим в кг/моль для системы СИ
+        const v = Math.sqrt((3 * R_GAS * t) / M_kg);
+        res.innerText = "v ≈ " + v.toFixed(1) + " м/с";
+    } else res.innerText = "Ошибка!";
+}
+// --- ОСНОВЫ ТЕРМОДИНАМИКИ ---
+
+function calcTerm1() {
+    const m = document.getElementById('term1_m').value;
+    const M = document.getElementById('term1_M').value;
+    const t = document.getElementById('term1_t').value;
+    const res = document.getElementById('resterm1');
+    if (m && M && t) {
+        const u = 1.5 * (m / M) * 8.31 * t;
+        res.innerText = "U ≈ " + u.toFixed(2) + " Дж";
+    } else res.innerText = "Заполните m, M и T!";
+}
+
+function calcTerm2() {
+    const p = document.getElementById('term2_p').value;
+    const dv = document.getElementById('term2_dv').value;
+    const res = document.getElementById('resterm2');
+    if (p && dv) {
+        res.innerText = "A = " + (p * dv).toFixed(2) + " Дж";
+    } else res.innerText = "Введите p и ΔV!";
+}
+
+function calcTerm4() {
+    const q1 = document.getElementById('term4_q1').value;
+    const q2 = document.getElementById('term4_q2').value;
+    const res = document.getElementById('resterm4');
+    if (q1 && q2 && Number(q1) !== 0) {
+        const eta = ((q1 - q2) / q1) * 100;
+        res.innerText = "η = " + eta.toFixed(1) + "%";
+    } else res.innerText = "Ошибка данных!";
+}
+
+function calcTerm5() {
+    const t1 = document.getElementById('term5_t1').value;
+    const t2 = document.getElementById('term5_t2').value;
+    const res = document.getElementById('resterm5');
+    if (t1 && t2 && Number(t1) !== 0) {
+        const eta = ((t1 - t2) / t1) * 100;
+        res.innerText = "η(max) = " + eta.toFixed(1) + "%";
+    } else res.innerText = "Введите T₁ и T₂!";
+}
+// --- АГРЕГАТНЫЕ СОСТОЯНИЯ ---
+
+function calcPh1() {
+    const c = document.getElementById('ph1_c').value;
+    const m = document.getElementById('ph1_m').value;
+    const dt = document.getElementById('ph1_dt').value;
+    const res = document.getElementById('resph1');
+    if (c && m && dt) {
+        const q = c * m * dt;
+        res.innerText = "Q = " + q.toLocaleString() + " Дж";
+    } else res.innerText = "Заполни все поля!";
+}
+
+function calcPh2() {
+    const l = document.getElementById('ph2_l').value;
+    const m = document.getElementById('ph2_m').value;
+    const res = document.getElementById('resph2');
+    if (l && m) res.innerText = "Q = " + (l * m).toLocaleString() + " Дж";
+}
+
+function calcPh3() {
+    const L = document.getElementById('ph3_L').value;
+    const m = document.getElementById('ph3_m').value;
+    const res = document.getElementById('resph3');
+    if (L && m) res.innerText = "Q = " + (L * m).toLocaleString() + " Дж";
+}
+
+function calcPh4() {
+    const q_val = document.getElementById('ph4_q').value;
+    const m = document.getElementById('ph4_m').value;
+    const res = document.getElementById('resph4');
+    if (q_val && m) res.innerText = "Q = " + (q_val * m).toLocaleString() + " Дж";
+}
+
+function calcPh5() {
+    const p = document.getElementById('ph5_p').value;
+    const pnas = document.getElementById('ph5_pnas').value;
+    const res = document.getElementById('resph5');
+    if (p && pnas && pnas != 0) {
+        const phi = (p / pnas) * 100;
+        if (phi > 100) {
+            res.innerText = "φ = " + phi.toFixed(1) + "% (Выпадает роса/дождь)";
+        } else {
+            res.innerText = "φ = " + phi.toFixed(1) + "%";
+        }
+    } else res.innerText = "Ошибка в данных!";
+}
+// --- ЭЛЕКТРОСТАТИКА ---
+const K_COULOMB = 9e9;
+const EPS_0 = 8.854e-12;
+
+function calcEl1() {
+    const q1 = document.getElementById('el1_q1').value;
+    const q2 = document.getElementById('el1_q2').value;
+    const r = document.getElementById('el1_r').value;
+    const res = document.getElementById('resel1');
+    if (q1 && q2 && r && r != 0) {
+        const f = K_COULOMB * (Math.abs(q1) * Math.abs(q2)) / (r * r);
+        res.innerText = "F = " + f.toExponential(2) + " Н";
+    }
+}
+
+function calcEl7() {
+    const s = document.getElementById('el7_s').value;
+    const d = document.getElementById('el7_d').value;
+    const res = document.getElementById('resel7');
+    if (s && d && d != 0) {
+        // Емкость в Фарадах, переводим в пикоФарады (10^12)
+        const c = (EPS_0 * s / d) * 1e12;
+        res.innerText = "C ≈ " + c.toFixed(2) + " пФ";
+    }
+}
+
+function calcEl14() {
+    const R = Number(document.getElementById('el14_R').value);
+    const r = Number(document.getElementById('el14_r').value);
+    const res = document.getElementById('resel14');
+    if ((R + r) !== 0) {
+        const eta = (R / (R + r)) * 100;
+        res.innerText = "η = " + eta.toFixed(1) + "%";
+    }
+}
+// --- ПОСТОЯННЫЙ ТОК ---
+
+function calcDC1() {
+    const q = document.getElementById('dc1_q').value;
+    const t = document.getElementById('dc1_t').value;
+    const res = document.getElementById('resdc1');
+    if (q && t && t != 0) res.innerText = "I = " + (q / t).toFixed(2) + " А";
+}
+
+function calcDC2() {
+    const u = document.getElementById('dc2_u').value;
+    const r = document.getElementById('dc2_r').value;
+    const res = document.getElementById('resdc2');
+    if (u && r && r != 0) res.innerText = "I = " + (u / r).toFixed(2) + " А";
+}
+
+function calcDC3() {
+    const l = document.getElementById('dc3_l').value;
+    const s = document.getElementById('dc3_s').value;
+    const res = document.getElementById('resdc3');
+    const rho_cu = 0.017; // Удельное сопротивление меди (Ом*мм2/м)
+    if (l && s && s != 0) {
+        const r = rho_cu * (l / s);
+        res.innerText = "R ≈ " + r.toFixed(4) + " Ом";
+    }
+}
+
+function calcDC5() {
+    const u = document.getElementById('dc5_u').value;
+    const i = document.getElementById('dc5_i').value;
+    const res = document.getElementById('resdc5');
+    if (u && i) res.innerText = "P = " + (u * i).toFixed(2) + " Вт";
+}
+// --- ЗАКОНЫ ПОЛНОЙ ЦЕПИ ---
+
+function calcFullOhm() {
+    const e = document.getElementById('fc2_e').value;
+    const R = document.getElementById('fc2_R').value;
+    const r = document.getElementById('fc2_r').value;
+    const res = document.getElementById('resfc2');
+    
+    if (e && R && r) {
+        const i = e / (Number(R) + Number(r));
+        res.innerText = "I = " + i.toFixed(3) + " А";
+    } else {
+        res.innerText = "Заполните ℰ, R и r!";
+    }
+}
+// --- ТОКИ В СРЕДАХ ---
+
+function calcElectrolysis() {
+    const k = document.getElementById('med_k').value;
+    const i = document.getElementById('med_i').value;
+    const t = document.getElementById('med_t').value;
+    const res = document.getElementById('resmed1');
+    
+    if (k && i && t) {
+        const m = k * i * t;
+        res.innerText = "m = " + m.toFixed(2) + " мг";
+    } else {
+        res.innerText = "Заполните k, I и t!";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        // ПОИСК И КРЕСТИК
+const searchInput = document.getElementById('formulaSearch');
+const clearBtn = document.getElementById('clearSearch');
+const suggList = document.getElementById('searchSuggestions');
+const cards = document.querySelectorAll('details');
+
+// 1. ИСПРАВЛЕНИЕ: Хватаем ВООБЩЕ ВСЕ заголовки и подзаголовки (h2, h3, h4 и твои классы)
+const titles = document.querySelectorAll('.section-title, h2, h3, h4, .category-title');
+
+searchInput.addEventListener('input', function() {
+    const val = this.value.toLowerCase().trim();
+    clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+    suggList.innerHTML = '';
+
+    // Если поиск пустой - показываем всё обратно
+    if (val.length < 1) {
+        suggList.style.display = 'none';
+        cards.forEach(c => c.style.display = 'block');
+        titles.forEach(t => t.style.display = 'block');
+        return;
+    }
+
+    // 2. Скрываем АБСОЛЮТНО ВСЕ заголовки и подзаголовки, как ты просил
+    titles.forEach(t => t.style.display = 'none');
+
+    cards.forEach(card => {
+        // Добавил toLowerCase() на всякий случай, чтобы регистр букв не ломал поиск
+        const name = card.getAttribute('data-name').toLowerCase(); 
+        
+        if (name.includes(val)) {
+            // Если нашли совпадение - карточка остается на экране
+            card.style.display = 'block';
+
+            const li = document.createElement('li');
+            li.innerText = card.querySelector('summary').innerText;
+            li.onclick = () => {
+    searchInput.value = li.innerText;
+    suggList.style.display = 'none';
+    clearBtn.style.display = 'block'; // Показываем крестик
+
+    // Прячем всё лишнее
+    cards.forEach(c => c.style.display = 'none');
+    titles.forEach(t => t.style.display = 'none');
+
+    // Показываем и подсвечиваем выбранную
+    card.style.display = 'block';
+    card.setAttribute('open', 'true');
+    
+    // Единый стиль подсветки
+    card.style.border = "3px solid #3498db";
+    card.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+    card.style.borderRadius = "10px";
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+            suggList.appendChild(li);
+        } else {
+            // Если совпадения нет - прячем карточку, чтобы не мешалась
+            card.style.display = 'none';
+        }
+    });
+
+    suggList.style.display = suggList.children.length > 0 ? 'block' : 'none';
+});
+
+clearBtn.onclick = () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    suggList.style.display = 'none';
+    
+    cards.forEach(c => {
+        c.style.display = 'block';
+        
+        // ВМЕСТО "none" ПИШЕМ ПУСТУЮ СТРОКУ ""
+        // Это скажет браузеру: "Забудь, что я тут рисовал через JS, верни как было в CSS"
+        c.style.border = ""; 
+        c.style.boxShadow = "";
+        c.style.backgroundColor = ""; // если менял фон, тоже очищаем
+        
+        c.removeAttribute('open');
+    });
+
+    titles.forEach(t => t.style.display = 'block');
+    searchInput.focus();
+};
+</script>
+<script>
+function handleGlobalSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let findMe = urlParams.get('find');
+
+    if (findMe) {
+        findMe = decodeURIComponent(findMe).trim();
+        
+        // 1. Находим элементы локального поиска на странице
+        const searchInput = document.getElementById('formulaSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        
+        // 2. Вставляем текст в строку поиска, чтобы пользователь видел, что он искал
+        if (searchInput) {
+            searchInput.value = findMe;
+        }
+        
+        // 3. Показываем кнопку "крестик"
+        if (clearBtn) {
+            clearBtn.style.display = 'block';
+        }
+
+        const findMeLower = findMe.toLowerCase();
+        const summaries = document.querySelectorAll('summary');
+        const allCards = document.querySelectorAll('details');
+        const allTitles = document.querySelectorAll('h2, h3, h4, .section-title, .category-title');
+
+        let foundCard = null;
+
+        // Ищем нужную карточку
+        summaries.forEach(summary => {
+            const cardText = summary.innerText.trim().toLowerCase();
+            if (cardText === findMeLower || cardText.includes(findMeLower)) {
+                foundCard = summary.parentElement;
+            }
+        });
+
+        if (foundCard) {
+            // Прячем всё лишнее (заголовки и другие карточки)
+            allTitles.forEach(t => t.style.display = 'none');
+            allCards.forEach(c => c.style.display = 'none');
+
+            // Показываем только результат
+            foundCard.style.display = 'block';
+            foundCard.open = true;
+
+            setTimeout(() => {
+                foundCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                foundCard.style.border = "3px solid #3498db";
+                foundCard.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+                foundCard.style.borderRadius = "10px";
+            }, 300);
+        }
+    }
+}
+
+// Привязываем запуск к загрузке страницы
+window.addEventListener('load', handleGlobalSearch);
+</script>
+</body>
+</html>

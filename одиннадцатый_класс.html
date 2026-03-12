@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 класс - Physics PRO</title>
+    <link rel="stylesheet" href="оформление.css">
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <style>
+        /* Дополнительный стиль для заголовков разделов */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+<body class="class-11-page">
+
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <h1>11 класс</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">На главную</a>
+        <a href="седьмой_класс.html">7 класс</a>
+	<a href="восьмой_класс.html">8 класс</a>
+	<a href="девятый_класс.html">9 класс</a>
+	<a href="десятый_класс.html">10 класс</a>
+    </nav>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="formulaSearch" placeholder="Поиск по темам 11 класса..." autocomplete="off">
+                <button id="clearSearch" class="clear-search" title="Очистить">&times;</button>
+            </div>
+            <ul id="searchSuggestions" class="suggestions-list"></ul>
+        </div>
+<h2 class="section-title">Магнитное поле и электромагнитная индукция</h2>
+<div class="grid">
+
+    <details data-name="магнитная индукция определение тесла">
+        <summary>Магнитная индукция</summary>
+        <div class="content">
+            <p>Силовая характеристика магнитного поля. Единица измерения — <b>Тесла [Тл]</b>.</p>
+            <p><i>Направление определяется по правилу буравчика или правой руки для тока.</i></p>
+        </div>
+    </details>
+
+    <details data-name="сила ампера формула">
+        <summary>Сила Ампера</summary>
+        <div class="content">
+            <div class="math">$$F_A = BI l \sin\alpha$$</div>
+            <p>Действует на проводник с током. Направление — <b>левая рука</b> (пальцы по току, B в ладонь).</p>
+            <div class="calc-box">
+                <input type="number" id="mag2_b" placeholder="B (Тл)">
+                <input type="number" id="mag2_i" placeholder="I (А)">
+                <input type="number" id="mag2_l" placeholder="l (м)">
+                <input type="number" id="mag2_ang" placeholder="α (град)" value="90">
+                <button class="calc-btn" onclick="calcMag2()">Рассчитать Fa</button>
+                <div id="resmag2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="сила лоренца формула">
+        <summary>Сила Лоренца</summary>
+        <div class="content">
+            <div class="math">$$F_Л = qvB \sin\alpha$$</div>
+            <p>Действует на движущийся заряд. Направление — <b>левая рука</b> (для + заряда).</p>
+            <div class="calc-box">
+                <input type="number" id="mag3_q" placeholder="q (Кл)">
+                <input type="number" id="mag3_v" placeholder="v (м/с)">
+                <input type="number" id="mag3_b" placeholder="B (Тл)">
+                <button class="calc-btn" onclick="calcMag3()">Рассчитать Fл</button>
+                <div id="resmag3" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="магнитный поток формула вебер">
+        <summary>Магнитный поток</summary>
+        <div class="content">
+            <div class="math">$$\Phi = BS \cos\alpha$$</div>
+            <p>Число линий магнитной индукции, пронизывающих площадь S. Ед. измерения — <b>Вебер [Вб]</b>.</p>
+        </div>
+    </details>
+
+    <details data-name="закон электромагнитной индукции фарадея">
+        <summary>Закон индукции</summary>
+        <div class="content">
+            <div class="math">$$\mathcal{E}_i = - \frac{\Delta\Phi}{\Delta t}$$</div>
+            <p>ЭДС индукции возникает при любом изменении магнитного потока. Знак "-" — закон Ленца.</p>
+        </div>
+    </details>
+
+    <details data-name="индуктивность катушки генри">
+        <summary>Индуктивность</summary>
+        <div class="content">
+            <div class="math">$$L = \frac{\Phi}{I}$$</div>
+            <p>Характеристика катушки. Единица измерения — <b>Генри [Гн]</b>.</p>
+        </div>
+    </details>
+
+    <details data-name="эдс самоиндукции формула">
+        <summary>ЭДС самоиндукции</summary>
+        <div class="content">
+            <div class="math">$$\mathcal{E}_{si} = -L \frac{\Delta I}{\Delta t}$$</div>
+            <p>Препятствует изменению тока в самой катушке.</p>
+        </div>
+    </details>
+
+    <details data-name="энергия магнитного поля катушки">
+        <summary>Энергия катушки</summary>
+        <div class="content">
+            <div class="math">$$W_м = \frac{LI^2}{2}$$</div>
+        </div>
+    </details>
+
+    <details data-name="движение заряда в магнитном поле окружность">
+        <summary>Движение по окружности</summary>
+        <div class="content">
+            <p>Если <b>v ⊥ B</b>, частица движется по окружности, так как сила Лоренца играет роль центростремительной.</p>
+        </div>
+    </details>
+
+    <details data-name="радиус движения заряда в поле">
+        <summary>Радиус</summary>
+        <div class="content">
+            <div class="math">$$R = \frac{mv}{qB}$$</div>
+            <div class="calc-box">
+                <input type="number" id="mag10_m" placeholder="m (кг)">
+                <input type="number" id="mag10_v" placeholder="v (м/с)">
+                <input type="number" id="mag10_q" placeholder="q (Кл)">
+                <input type="number" id="mag10_b" placeholder="B (Тл)">
+                <button class="calc-btn" onclick="calcMag10()">Найти R (м)</button>
+                <div id="resmag10" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="период обращения заряда в магнитном поле">
+        <summary>Период</summary>
+        <div class="content">
+            <div class="math">$$T = \frac{2\pi m}{qB}$$</div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Колебания и волны</h2>
+
+<h3 style="text-align:center; color: var(--accent);">Механические колебания</h3>
+<div class="grid">
+    <details data-name="период пружинного маятника">
+        <summary>Пружинный маятник</summary>
+        <div class="content">
+            <div class="math">$$T = 2\pi\sqrt{\frac{m}{k}}$$</div>
+            <p>Период зависит только от массы груза и жесткости пружины.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="wav1_m" placeholder="m (кг)">
+                <input type="number" id="wav1_k" placeholder="k (Н/м)">
+                <button class="calc-btn" onclick="calcWav1()">Рассчитать T (с)</button>
+                <div id="reswav1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="период математического маятника">
+        <summary>Математический маятник</summary>
+        <div class="content">
+            <div class="math">$$T = 2\pi\sqrt{\frac{l}{g}}$$</div>
+            <p>Период зависит от длины нити <b>l</b> и ускорения свободного падения <b>g</b>.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="wav2_l" placeholder="l (м)">
+                <button class="calc-btn" onclick="calcWav2()">Рассчитать T (с)</button>
+                <div id="reswav2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="уравнение гармонических колебаний">
+        <summary>Уравнение колебаний</summary>
+        <div class="content">
+            <div class="math">$$x(t) = A \cos(\omega t + \phi_0)$$</div>
+            <p><b>A</b> — амплитуда, <b>ω</b> — циклическая частота, <b>φ₀</b> — начальная фаза.</p>
+            
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin-top: 20px;">Электромагнитные колебания</h3>
+<div class="grid">
+    <details data-name="формула томсона период колебательного контура">
+        <summary>Формула Томсона</summary>
+        <div class="content">
+            <div class="math">$$T = 2\pi\sqrt{LC}$$</div>
+            <p>Период свободных колебаний в контуре из катушки (L) и конденсатора (C).</p>
+            
+            <div class="calc-box">
+                <input type="number" id="wav4_l" placeholder="L (Гн)">
+                <input type="number" id="wav4_c" placeholder="C (Ф)">
+                <button class="calc-btn" onclick="calcWav4()">Рассчитать T (с)</button>
+                <div id="reswav4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="циклическая частота контура">
+        <summary>Циклическая частота</summary>
+        <div class="content">
+            <div class="math">$$\omega = \frac{1}{\sqrt{LC}}$$</div>
+        </div>
+    </details>
+
+    <details data-name="закон сохранения энергии в колебательном контуре">
+        <summary>ЗСЭ в контуре</summary>
+        <div class="content">
+            <div class="math">$$\frac{q^2}{2C} + \frac{LI^2}{2} = \text{const}$$</div>
+            <p>Энергия перетекает из электрического поля конденсатора в магнитное поле катушки.</p>
+        </div>
+    </details>
+
+    <details data-name="связь длины волны частоты и скорости света">
+        <summary>Длина волны</summary>
+        <div class="content">
+            <div class="math">$$\lambda = \frac{c}{\nu} = cT$$</div>
+            <p><b>c</b> — скорость света ($3 \cdot 10^8$ м/с), <b>ν</b> — частота.</p>
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin-top: 20px;">Переменный ток</h3>
+<div class="grid">
+    <details data-name="действующие значения тока и напряжения">
+        <summary>Действующие значения</summary>
+        <div class="content">
+            <div class="math">$$I_{д} = \frac{I_m}{\sqrt{2}}, U_{д} = \frac{U_m}{\sqrt{2}}$$</div>
+            <p>Значения, которые показывают амперметры и вольтметры переменного тока.</p>
+        </div>
+    </details>
+
+    <details data-name="коэффициент трансформации формула">
+        <summary>Трансформатор</summary>
+        <div class="content">
+            <div class="math">$$k = \frac{U_1}{U_2} = \frac{N_1}{N_2}$$</div>
+            <p><b>k > 1</b> — понижающий, <b>k < 1</b> — повышающий трансформатор.</p>
+           
+
+        </div>
+    </details>
+</div>
+<h2 class="section-title">Оптика</h2>
+
+<h3 style="text-align:center; color: var(--accent);">Геометрическая оптика</h3>
+<div class="grid">
+    <details data-name="закон преломления света снеллиуса">
+        <summary>Закон преломления</summary>
+        <div class="content">
+            <div class="math">$$\frac{\sin\alpha}{\sin\beta} = \frac{n_2}{n_1}$$</div>
+            <p>Описывает изменение направления луча на границе двух сред.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="opt1_n1" placeholder="n1 (из)" value="1">
+                <input type="number" id="opt1_n2" placeholder="n2 (в)" value="1.33">
+                <input type="number" id="opt1_ang" placeholder="α (град)">
+                <button class="calc-btn" onclick="calcOpt1()">Найти угол β</button>
+                <div id="resopt1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="абсолютный показатель преломления">
+        <summary>Показатель преломления</summary>
+        <div class="content">
+            <div class="math">$$n = \frac{c}{v}$$</div>
+            <p>Показывает, во сколько раз скорость света в вакууме больше скорости света в среде.</p>
+        </div>
+    </details>
+
+    <details data-name="формула тонкой линзы знаки">
+        <summary>Формула тонкой линзы</summary>
+        <div class="content">
+            <div class="math">$$\pm \frac{1}{F} = \frac{1}{d} \pm \frac{1}{f}$$</div>
+            <p><b>+F</b> — собирающая, <b>-F</b> — рассеивающая. <b>+f</b> — действительное изображение, <b>-f</b> — мнимое.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="оптическая сила линзы диоптрии">
+        <summary>Оптическая сила</summary>
+        <div class="content">
+            <div class="math">$$D = \frac{1}{F}$$</div>
+            <p>Единица измерения — <b>Диоптрии [дптр]</b>. F должно быть в метрах!</p>
+        </div>
+    </details>
+
+    <details data-name="линейное увеличение линзы">
+        <summary>Увеличение</summary>
+        <div class="content">
+            <div class="math">$$\Gamma = \frac{H}{h} = \frac{f}{d}$$</div>
+            <p>Отношение размера изображения к размеру предмета.</p>
+        </div>
+    </details>
+
+    <details data-name="полное внутреннее отражение предельный угол">
+        <summary>Полное отражение</summary>
+        <div class="content">
+            <div class="math">$$\sin \alpha_0 = \frac{n_2}{n_1}$$</div>
+            <p>Эффект, благодаря которому работает оптоволоконный интернет.</p>
+        </div>
+    </details>
+</div>
+
+<h3 style="text-align:center; color: var(--accent); margin-top: 20px;">Волновая оптика</h3>
+<div class="grid">
+    <details data-name="условие максимума интерференции">
+        <summary>Максимум интерференции</summary>
+        <div class="content">
+            <div class="math">$$\Delta d = k\lambda$$</div>
+            <p>Волны усиливают друг друга, когда разность хода равна целому числу волн.</p>
+            
+
+
+        </div>
+    </details>
+
+    <details data-name="условие минимума интерференции">
+        <summary>Минимум интерференции</summary>
+        <div class="content">
+            <div class="math">$$\Delta d = (2k+1)\frac{\lambda}{2}$$</div>
+            <p>Волны гасят друг друга (противофаза).</p>
+        </div>
+    </details>
+
+    <details data-name="дифракционная решетка формула">
+        <summary>Дифракционная решетка</summary>
+        <div class="content">
+            <div class="math">$$d \sin\phi = k\lambda$$</div>
+            <p><b>d</b> — период решетки, <b>k</b> — порядок максимума.</p>
+            <div class="calc-box">
+                <input type="number" id="opt9_d" placeholder="d (мкм)">
+                <input type="number" id="opt9_k" placeholder="порядок k" value="1">
+                <input type="number" id="opt9_lam" placeholder="λ (нм)">
+                <button class="calc-btn" onclick="calcOpt9()">Найти угол φ</button>
+                <div id="resopt9" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+</div>
+<h2 class="section-title">Основы СТО</h2>
+<div class="grid">
+
+    <details data-name="первый постулат сто принцип относительности">
+        <summary>I постулат: Принцип относительности</summary>
+        <div class="content">
+            <p>Все физические процессы в инерциальных системах отсчета (ИСО) протекают одинаково. Никакими опытами внутри системы нельзя определить, покоится она или движется равномерно и прямолинейно.</p>
+            <p><i>Законы физики инвариантны во всех ИСО.</i></p>
+        </div>
+    </details>
+
+    <details data-name="второй постулат сто скорость света">
+        <summary>II постулат: Скорость света</summary>
+        <div class="content">
+            <p>Скорость света в вакууме одинакова во всех ИСО и не зависит ни от скорости источника, ни от скорости приемника.</p>
+            <div class="math">$$c \approx 3 \cdot 10^8 \text{ м/с}$$</div>
+            <p>Это предельная скорость передачи информации во Вселенной.</p>
+        </div>
+    </details>
+
+    <details data-name="релятивистское замедление времени формула">
+        <summary>Замедление времени</summary>
+        <div class="content">
+            <div class="math">$$t = \frac{\tau}{\sqrt{1 - v^2/c^2}}$$</div>
+            <p><b>τ</b> — время, измеренное в движущейся системе (собственное время). Чем выше скорость <b>v</b>, тем медленнее течет время для стороннего наблюдателя.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="энергия покоя формула эйнштейна">
+        <summary>Энергия</summary>
+        <div class="content">
+            <div class="math">$$E = mc^2$$</div>
+            <p>Энергия покоя тела. Показывает, что масса — это "заархивированная" энергия.</p>
+            <div class="calc-box">
+                <input type="number" id="sto4_m" placeholder="m (кг)">
+                <button class="calc-btn" onclick="calcSto4()">Рассчитать E (Дж)</button>
+                <div id="ressto4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Квантовая физика и фотоэффект</h2>
+<div class="grid">
+
+    <details data-name="энергия фотона формула">
+        <summary>Энергия фотона</summary>
+        <div class="content">
+            <div class="math">$$E = h\nu = \frac{hc}{\lambda}$$</div>
+            <p><b>h</b> — постоянная Планка. Энергия кванта света прямо пропорциональна его частоте.</p>
+            <div class="calc-box">
+                <input type="number" id="quant1_v" placeholder="ν (Гц)">
+                <button class="calc-btn" onclick="calcQuant1()">Рассчитать E (Дж)</button>
+                <div id="resquant1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="импульс фотона формула">
+        <summary>Импульс фотона</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{E}{c} = \frac{h}{\lambda}$$</div>
+            <p>Несмотря на отсутствие массы покоя, фотон обладает импульсом и может оказывать давление.</p>
+        </div>
+    </details>
+
+    <details data-name="уравнение эйнштейна для фотоэффекта">
+        <summary>Уравнение фотоэффекта</summary>
+        <div class="content">
+            <div class="math">$$h\nu = A_{вых} + E_{kmax}$$</div>
+            <p>Энергия падающего фотона идет на совершение работы выхода и на кинетическую энергию вылетевшего электрона.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="запирающее напряжение фотоэффект">
+        <summary>Запирающее напряжение</summary>
+        <div class="content">
+            <div class="math">$$E_{kmax} = eU_{зап}$$</div>
+            <p>Напряжение, при котором фототок прекращается. Позволяет измерить энергию фотоэлектронов.</p>
+            <div class="calc-box">
+                <input type="number" id="quant4_u" placeholder="Uзап (В)">
+                <button class="calc-btn" onclick="calcQuant4()">Найти Ek max (Дж)</button>
+                <div id="resquant4" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="красная граница фотоэффекта частота">
+        <summary>Красная граница</summary>
+        <div class="content">
+            <div class="math">$$\nu_{min} = \frac{A_{вых}}{h}$$</div>
+            <p>Минимальная частота света, при которой еще возможен фотоэффект для данного металла.</p>
+        </div>
+    </details>
+
+    <details data-name="давление света формула лебедев">
+        <summary>Давление света</summary>
+        <div class="content">
+            <div class="math">$$p = \frac{I}{c}(1 + \rho)$$</div>
+            <p><b>I</b> — интенсивность, <b>ρ</b> — коэффициент отражения (0 для черного, 1 для зеркала).</p>
+        </div>
+    </details>
+
+    <details data-name="релятивистская масса фотона">
+        <summary>Масса фотона</summary>
+        <div class="content">
+            <div class="math">$$m = \frac{h\nu}{c^2}$$</div>
+            <p>Релятивистская масса фотона, обусловленная его энергией. Масса покоя фотона всегда равна 0.</p>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Физика атома и ядра</h2>
+<div class="grid">
+
+    <details data-name="постулаты бора уровни энергии">
+        <summary>Постулаты Бора</summary>
+        <div class="content">
+            <div class="math">$$E_n - E_m = h\nu$$</div>
+            <p>Атом излучает или поглощает квант энергии только при переходе с одного стационарного уровня на другой.</p>
+            
+        </div>
+    </details>
+
+    <details data-name="закон радиоактивного распада формула">
+        <summary>Радиоактивный распад</summary>
+        <div class="content">
+            <div class="math">$$N = N_0 \cdot 2^{-\frac{t}{T}}$$</div>
+            <p><b>T</b> — период полураспада. Показывает, сколько ядер останется через время <b>t</b>.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="nuc2_n0" placeholder="N₀ (начальное)">
+                <input type="number" id="nuc2_t" placeholder="t (прошло времени)">
+                <input type="number" id="nuc2_T" placeholder="T (период)">
+                <button class="calc-btn" onclick="calcNuc2()">Остаток ядер N</button>
+                <div id="resnuc2" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="альфа распад схема">
+        <summary>Альфа-распад</summary>
+        <div class="content">
+            <div class="math">$${}^A_Z X \to {}^{A-4}_{Z-2} Y + {}^4_2 He$$</div>
+            <p>Ядро выбрасывает α-частицу (ядро гелия). Массовое число уменьшается на 4, зарядовое — на 2.</p>
+        </div>
+    </details>
+
+    <details data-name="бета распад схема">
+        <summary>Бета-распад</summary>
+        <div class="content">
+            <div class="math">$${}^A_Z X \to {}^A_{Z+1} Y + {}^{\;\;0}_{-1} e$$</div>
+            <p>Нейтрон превращается в протон, выбрасывая электрон. Масса не меняется, заряд растет на 1.</p>
+        </div>
+    </details>
+
+    <details data-name="дефект массы ядра формула">
+        <summary>Дефект массы</summary>
+        <div class="content">
+            <div class="math">$$\Delta m = (Z \cdot m_p + N \cdot m_n) - M_{ядра}$$</div>
+            <p>Масса целого ядра всегда меньше, чем сумма масс его отдельных нуклонов. Эта "потеря" и держит ядро вместе.</p>
+        </div>
+    </details>
+
+    <details data-name="энергия связи ядра формула">
+        <summary>Энергия связи</summary>
+        <div class="content">
+            <div class="math">$$E_{св} = \Delta m \cdot c^2$$</div>
+            <p>Энергия, которую нужно затратить, чтобы полностью расщепить ядро на отдельные нуклоны.</p>
+            <div class="calc-box">
+                <input type="number" id="nuc6_dm" placeholder="Δm (кг)">
+                <button class="calc-btn" onclick="calcNuc6()">Найти Eсв (Дж)</button>
+                <div id="resnuc6" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+</div>
+<h2 class="section-title">Астрономия</h2>
+<div class="grid">
+
+    <details data-name="закон хаббла расширение вселенной">
+        <summary>Закон Хаббла</summary>
+        <div class="content">
+            <div class="math">$$v = H \cdot r$$</div>
+            <p>Скорость удаления галактики <b>v</b> прямо пропорциональна расстоянию до нее <b>r</b>. <b>H</b> — постоянная Хаббла.</p>
+            
+            <div class="calc-box">
+                <input type="number" id="astro1_r" placeholder="r (Мпк)">
+                <button class="calc-btn" onclick="calcAstro1()">Найти скорость v</button>
+                <div id="resastro1" class="calc-result"></div>
+            </div>
+        </div>
+    </details>
+
+    <details data-name="светимость звезды определение">
+        <summary>Светимость звезды</summary>
+        <div class="content">
+            <p>Полная энергия, излучаемая звездой со всей ее поверхности в единицу времени (мощность).</p>
+            <div class="math">$$L = \sigma T^4 \cdot 4\pi R^2$$</div>
+            <p>Зависит от температуры поверхности <b>T</b> и радиуса звезды <b>R</b>.</p>
+            
+        </div>
+    </details>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </div>
+
+    <footer>
+        <p style="text-align:center">&copy; 2026 Справочник Physics PRO.</p>
+    </footer>
+
+    <script>
+        // ТЕМА
+        const themeBtn = document.getElementById('themeBtn');
+        function updateBtnIcon() {
+            themeBtn.innerText = document.documentElement.hasAttribute('data-theme') ? '☀️' : '🌙';
+        }
+        updateBtnIcon();
+        function toggleTheme() {
+            if (document.documentElement.hasAttribute('data-theme')) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateBtnIcon();
+        }
+
+        // КАЛЬКУЛЯТОРЫ
+        
+// --- МАГНИТНОЕ ПОЛЕ ---
+
+function calcMag2() {
+    const b = document.getElementById('mag2_b').value;
+    const i = document.getElementById('mag2_i').value;
+    const l = document.getElementById('mag2_l').value;
+    const ang = document.getElementById('mag2_ang').value;
+    const res = document.getElementById('resmag2');
+    if (b && i && l) {
+        const f = b * i * l * Math.sin(ang * Math.PI / 180);
+        res.innerText = "Fa = " + f.toFixed(3) + " Н";
+    }
+}
+
+function calcMag3() {
+    const q = document.getElementById('mag3_q').value;
+    const v = document.getElementById('mag3_v').value;
+    const b = document.getElementById('mag3_b').value;
+    const res = document.getElementById('resmag3');
+    if (q && v && b) {
+        const f = Math.abs(q) * v * b; // упрощенно sin=1
+        res.innerText = "Fл = " + f.toExponential(2) + " Н";
+    }
+}
+
+function calcMag10() {
+    const m = document.getElementById('mag10_m').value;
+    const v = document.getElementById('mag10_v').value;
+    const q = document.getElementById('mag10_q').value;
+    const b = document.getElementById('mag10_b').value;
+    const res = document.getElementById('resmag10');
+    if (m && v && q && b) {
+        const r = (m * v) / (Math.abs(q) * b);
+        res.innerText = "R = " + r.toFixed(4) + " м";
+    }
+}
+// --- КОЛЕБАНИЯ И ВОЛНЫ ---
+
+function calcWav1() {
+    const m = document.getElementById('wav1_m').value;
+    const k = document.getElementById('wav1_k').value;
+    const res = document.getElementById('reswav1');
+    if (m && k && k != 0) {
+        const t = 2 * Math.PI * Math.sqrt(m / k);
+        res.innerText = "T ≈ " + t.toFixed(3) + " с";
+    }
+}
+
+function calcWav2() {
+    const l = document.getElementById('wav2_l').value;
+    const res = document.getElementById('reswav2');
+    if (l) {
+        const t = 2 * Math.PI * Math.sqrt(l / 9.81);
+        res.innerText = "T ≈ " + t.toFixed(3) + " с";
+    }
+}
+
+function calcWav4() {
+    const l = document.getElementById('wav4_l').value;
+    const c = document.getElementById('wav4_c').value;
+    const res = document.getElementById('reswav4');
+    if (l && c) {
+        const t = 2 * Math.PI * Math.sqrt(l * c);
+        res.innerText = "T ≈ " + t.toExponential(3) + " с";
+    }
+}
+// --- ОПТИКА ---
+
+function calcOpt1() {
+    const n1 = document.getElementById('opt1_n1').value;
+    const n2 = document.getElementById('opt1_n2').value;
+    const angA = document.getElementById('opt1_ang').value;
+    const res = document.getElementById('resopt1');
+    
+    if (n1 && n2 && angA) {
+        const radA = angA * Math.PI / 180;
+        const sinB = (n1 * Math.sin(radA)) / n2;
+        if (sinB <= 1) {
+            const angB = Math.asin(sinB) * 180 / Math.PI;
+            res.innerText = "β ≈ " + angB.toFixed(1) + "°";
+        } else {
+            res.innerText = "Полное отражение!";
+        }
+    }
+}
+
+function calcOpt9() {
+    const d_mkm = document.getElementById('opt9_d').value;
+    const k = document.getElementById('opt9_k').value;
+    const lam_nm = document.getElementById('opt9_lam').value;
+    const res = document.getElementById('resopt9');
+    
+    if (d_mkm && k && lam_nm) {
+        const d = d_mkm * 1e-6;
+        const lam = lam_nm * 1e-9;
+        const sinPhi = (k * lam) / d;
+        if (sinPhi <= 1) {
+            const phi = Math.asin(sinPhi) * 180 / Math.PI;
+            res.innerText = "φ ≈ " + phi.toFixed(2) + "°";
+        } else {
+            res.innerText = "Максимум не существует";
+        }
+    }
+}
+// --- ОСНОВЫ СТО ---
+
+function calcSto4() {
+    const m = document.getElementById('sto4_m').value;
+    const res = document.getElementById('ressto4');
+    const c = 3e8;
+    
+    if (m) {
+        const e = m * Math.pow(c, 2);
+        res.innerText = "E ≈ " + e.toExponential(2) + " Дж";
+    } else {
+        res.innerText = "Введите массу!";
+    }
+}
+// --- КВАНТОВАЯ ФИЗИКА ---
+const H_PLANCK = 6.626e-34;
+const E_CHARGE = 1.602e-19;
+
+function calcQuant1() {
+    const v = document.getElementById('quant1_v').value;
+    const res = document.getElementById('resquant1');
+    if (v) {
+        const e = H_PLANCK * v;
+        res.innerText = "E = " + e.toExponential(2) + " Дж";
+    }
+}
+
+function calcQuant4() {
+    const u = document.getElementById('quant4_u').value;
+    const res = document.getElementById('resquant4');
+    if (u) {
+        const ek = E_CHARGE * u;
+        res.innerText = "Ek max = " + ek.toExponential(2) + " Дж";
+    }
+}
+// --- ФИЗИКА ЯДРА ---
+
+function calcNuc2() {
+    const n0 = document.getElementById('nuc2_n0').value;
+    const t = document.getElementById('nuc2_t').value;
+    const T = document.getElementById('nuc2_T').value;
+    const res = document.getElementById('resnuc2');
+    
+    if (n0 && t && T && T != 0) {
+        const n = n0 * Math.pow(2, -(t / T));
+        res.innerText = "N ≈ " + n.toFixed(1);
+    }
+}
+
+function calcNuc6() {
+    const dm = document.getElementById('nuc6_dm').value;
+    const res = document.getElementById('resnuc6');
+    const c = 3e8;
+    
+    if (dm) {
+        const e = dm * Math.pow(c, 2);
+        res.innerText = "Eсв = " + e.toExponential(2) + " Дж";
+    }
+}
+// --- АСТРОНОМИЯ ---
+
+function calcAstro1() {
+    const r = document.getElementById('astro1_r').value;
+    const res = document.getElementById('resastro1');
+    const H = 70; // Среднее значение постоянной Хаббла (км/с)/Мпк
+    
+    if (r) {
+        const v = H * r;
+        res.innerText = "v ≈ " + v.toFixed(0) + " км/с";
+    } else {
+        res.innerText = "Введите расстояние r!";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ПОИСК И КРЕСТИК
+const searchInput = document.getElementById('formulaSearch');
+const clearBtn = document.getElementById('clearSearch');
+const suggList = document.getElementById('searchSuggestions');
+const cards = document.querySelectorAll('details');
+
+// 1. ИСПРАВЛЕНИЕ: Хватаем ВООБЩЕ ВСЕ заголовки и подзаголовки (h2, h3, h4 и твои классы)
+const titles = document.querySelectorAll('.section-title, h2, h3, h4, .category-title');
+
+searchInput.addEventListener('input', function() {
+    const val = this.value.toLowerCase().trim();
+    clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+    suggList.innerHTML = '';
+
+    // Если поиск пустой - показываем всё обратно
+    if (val.length < 1) {
+        suggList.style.display = 'none';
+        cards.forEach(c => c.style.display = 'block');
+        titles.forEach(t => t.style.display = 'block');
+        return;
+    }
+
+    // 2. Скрываем АБСОЛЮТНО ВСЕ заголовки и подзаголовки, как ты просил
+    titles.forEach(t => t.style.display = 'none');
+
+    cards.forEach(card => {
+        // Добавил toLowerCase() на всякий случай, чтобы регистр букв не ломал поиск
+        const name = card.getAttribute('data-name').toLowerCase(); 
+        
+        if (name.includes(val)) {
+            // Если нашли совпадение - карточка остается на экране
+            card.style.display = 'block';
+
+            const li = document.createElement('li');
+            li.innerText = card.querySelector('summary').innerText;
+            li.onclick = () => {
+    searchInput.value = li.innerText;
+    suggList.style.display = 'none';
+    clearBtn.style.display = 'block'; // Показываем крестик
+
+    // Прячем всё лишнее
+    cards.forEach(c => c.style.display = 'none');
+    titles.forEach(t => t.style.display = 'none');
+
+    // Показываем и подсвечиваем выбранную
+    card.style.display = 'block';
+    card.setAttribute('open', 'true');
+    
+    // Единый стиль подсветки
+    card.style.border = "3px solid #3498db";
+    card.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+    card.style.borderRadius = "10px";
+
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+            suggList.appendChild(li);
+        } else {
+            // Если совпадения нет - прячем карточку, чтобы не мешалась
+            card.style.display = 'none';
+        }
+    });
+
+    suggList.style.display = suggList.children.length > 0 ? 'block' : 'none';
+});
+
+clearBtn.onclick = () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    suggList.style.display = 'none';
+    
+    cards.forEach(c => {
+        c.style.display = 'block';
+        
+        // ВМЕСТО "none" ПИШЕМ ПУСТУЮ СТРОКУ ""
+        // Это скажет браузеру: "Забудь, что я тут рисовал через JS, верни как было в CSS"
+        c.style.border = ""; 
+        c.style.boxShadow = "";
+        c.style.backgroundColor = ""; // если менял фон, тоже очищаем
+        
+        c.removeAttribute('open');
+    });
+
+    titles.forEach(t => t.style.display = 'block');
+    searchInput.focus();
+};
+</script>
+<script>
+function handleGlobalSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let findMe = urlParams.get('find');
+
+    if (findMe) {
+        findMe = decodeURIComponent(findMe).trim();
+        
+        // 1. Находим элементы локального поиска на странице
+        const searchInput = document.getElementById('formulaSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        
+        // 2. Вставляем текст в строку поиска, чтобы пользователь видел, что он искал
+        if (searchInput) {
+            searchInput.value = findMe;
+        }
+        
+        // 3. Показываем кнопку "крестик"
+        if (clearBtn) {
+            clearBtn.style.display = 'block';
+        }
+
+        const findMeLower = findMe.toLowerCase();
+        const summaries = document.querySelectorAll('summary');
+        const allCards = document.querySelectorAll('details');
+        const allTitles = document.querySelectorAll('h2, h3, h4, .section-title, .category-title');
+
+        let foundCard = null;
+
+        // Ищем нужную карточку
+        summaries.forEach(summary => {
+            const cardText = summary.innerText.trim().toLowerCase();
+            if (cardText === findMeLower || cardText.includes(findMeLower)) {
+                foundCard = summary.parentElement;
+            }
+        });
+
+        if (foundCard) {
+            // Прячем всё лишнее (заголовки и другие карточки)
+            allTitles.forEach(t => t.style.display = 'none');
+            allCards.forEach(c => c.style.display = 'none');
+
+            // Показываем только результат
+            foundCard.style.display = 'block';
+            foundCard.open = true;
+
+            setTimeout(() => {
+                foundCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                foundCard.style.border = "3px solid #3498db";
+                foundCard.style.boxShadow = "0 0 20px rgba(52, 152, 219, 0.5)";
+                foundCard.style.borderRadius = "10px";
+            }, 300);
+        }
+    }
+}
+
+// Привязываем запуск к загрузке страницы
+window.addEventListener('load', handleGlobalSearch);
+</script>
+</body>
+</html>
